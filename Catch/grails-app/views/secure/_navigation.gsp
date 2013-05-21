@@ -17,8 +17,7 @@
 	<!-- Begin top navigation menu -->
 	<div class="menu_nav">
 	    <ul>
-	    	<%-- Access --%> 
-	        <li><g:link controller="public" action="_access"><span>Home</span></g:link></li>
+	        <li><g:link controller="main" action="index"><span>Home</span></g:link></li>
 	        <%-- Search --%> 
 	        <%--
 	        <li><g:link controller="public" action="search"><span>Search</span></g:link></li>

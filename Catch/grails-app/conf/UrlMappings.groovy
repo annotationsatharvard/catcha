@@ -16,7 +16,11 @@ class UrlMappings {
 			action = 'createAccount'
 		 }
 
-		"/"(view:"/index")
+		//"/"(view:"/index")
+		 "/" {
+			 controller = 'main'
+			 action = 'index'
+		 }
 		"500"(view:'/error')
 	}
 }

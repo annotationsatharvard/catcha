@@ -103,3 +103,6 @@ grails.plugins.springsecurity.rememberMe.persistentToken.domainClassName = 'org.
 
 grails.plugins.springsecurity.openid.domainClass = 'org.mindinformatics.ann.framework.module.security.OpenID'
 
+grails.plugins.springsecurity.controllerAnnotations.staticRules = [
+	'/secure/**': ['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_USER']
+]

@@ -15,27 +15,39 @@
       </div>
     </div>
 	<!-- Begin top navigation menu -->
-	<div class="menu_nav">
-	    <ul>
-	        <li><g:link controller="main" action="index"><span>Home</span></g:link></li>
-	        <%-- Search --%> 
-	        <%--
-	        <li><g:link controller="public" action="search"><span>Search</span></g:link></li>
-	         --%>
-	        <%-- Signup --%> 
-	        <g:if test="${menuitem=='signup'}"><li class="active"><g:link controller="openid" action="auth"><span>Search</span></g:link></li></g:if>
-	        <g:else><li><g:link controller="public" action="signup"><span>Search</span></g:link></li></g:else>
-	        <%-- Node info --%> 
-	        <g:if test="${menuitem=='nodeinfo'}"><li class="active"><g:link controller="public" action="nodeinfo"><span>Browse</span></g:link></li></g:if>
-	        <g:else><li><g:link controller="public" action="nodeinfo"><span>Browse</span></g:link></li></g:else>
-	        <%-- Credits --%> 
-	        <g:if test="${menuitem=='credits'}"><li class="active"><g:link controller="public" action="credits"><span>Node</span></g:link></li></g:if>
-	        <g:else><li><g:link controller="public" action="credits"><span>Node</span></g:link></li></g:else>
-	        <li><g:link controller="logout" action="index"><img id="groupsSpinner" src="${resource(dir:'images/secure',file:'exit.png',plugin:'users-module')}" title="Logout" /></g:link></li>
-	    </ul>
-	</div>
-	<!-- End top navigation menu -->
-	<br class="clear" />
+ <div id="topnav">
+      <ul>
+        <li><a class="active" href="index.html">Homepage</a>
+          <ul>
+            <li><a href="#">Lorem ipsum dolor</a></li>
+            <li><a href="#">Suspendisse in neque</a></li>
+            <li><a href="#">Praesent et eros</a></li>
+          </ul>
+        </li>
+        <li><a href="style-demo.html">Style Demo</a>
+          <ul>
+            <li><a href="#">Lorem ipsum dolor</a></li>
+            <li><a href="#">Suspendisse in neque</a></li>
+            <li><a href="#">Praesent et eros</a></li>
+          </ul>
+        </li>
+        <li><a href="full-width.html">Full Width</a>
+          <ul>
+            <li><a href="#">Lorem ipsum dolor</a></li>
+            <li><a href="#">Suspendisse in neque</a></li>
+            <li><a href="#">Praesent et eros</a></li>
+          </ul>
+        </li>
+        <li class="last"><a href="#">Our Services</a>
+          <ul>
+            <li><a href="#">Lorem ipsum dolor</a></li>
+            <li><a href="#">Suspendisse in neque</a></li>
+            <li><a href="#">Praesent et eros</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <br class="clear" />
   </div>
 </div>
 

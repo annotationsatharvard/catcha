@@ -6,7 +6,7 @@
 <!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"><!--<![endif]-->
 <head>
 <meta name="layout" content="public-layout-wide" />
-<title>Example - The Domeo Annotation Toolkit</title>
+<title>Home :: ${grailsApplication.config.af.shared.title}</title>
 </head>
 <body>
 	<g:render template="/shared/administration" plugin="af-shared" /> 

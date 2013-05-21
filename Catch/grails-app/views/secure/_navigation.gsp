@@ -17,32 +17,22 @@
 	<!-- Begin top navigation menu -->
  <div id="topnav">
       <ul>
-        <li><a class="active" href="index.html">Homepage</a>
+        <li><a class="active" href="index.html">Home</a>
+        </li>
+        <li><a href="style-demo.html">Share</a>
           <ul>
-            <li><a href="#">Lorem ipsum dolor</a></li>
-            <li><a href="#">Suspendisse in neque</a></li>
-            <li><a href="#">Praesent et eros</a></li>
+            <li><a href="#">Upload annotation</a></li>
           </ul>
         </li>
-        <li><a href="style-demo.html">Style Demo</a>
+        <li><a href="full-width.html">View</a>
           <ul>
-            <li><a href="#">Lorem ipsum dolor</a></li>
-            <li><a href="#">Suspendisse in neque</a></li>
-            <li><a href="#">Praesent et eros</a></li>
+            <li><a href="#">Search annotation</a></li>
+            <li><a href="#">Browse annotation</a></li>
           </ul>
         </li>
-        <li><a href="full-width.html">Full Width</a>
-          <ul>
-            <li><a href="#">Lorem ipsum dolor</a></li>
-            <li><a href="#">Suspendisse in neque</a></li>
-            <li><a href="#">Praesent et eros</a></li>
-          </ul>
-        </li>
-        <li class="last"><a href="#">Our Services</a>
-          <ul>
-            <li><a href="#">Lorem ipsum dolor</a></li>
-            <li><a href="#">Suspendisse in neque</a></li>
-            <li><a href="#">Praesent et eros</a></li>
+        <li class="last"><a href="#">Network</a>
+         <ul>
+            <li><a href="#">Systems</a></li>
           </ul>
         </li>
       </ul>

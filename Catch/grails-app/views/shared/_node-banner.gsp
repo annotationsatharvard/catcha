@@ -9,7 +9,7 @@ div.public-formbox {
 
 .public-formbox-inner {
 	width: 450px;
-	border: 1px #999999 solid;
+	border: 1px #ddd solid;
 	background: #fff;
 	height: 140px;
 }

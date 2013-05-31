@@ -2,12 +2,14 @@
 import org.mindinformatics.ann.framework.module.security.groups.GroupPrivacy
 import org.mindinformatics.ann.framework.module.security.groups.GroupRole
 import org.mindinformatics.ann.framework.module.security.groups.GroupStatus
+import org.mindinformatics.ann.framework.module.security.groups.UserStatusInGroup
 import org.mindinformatics.ann.framework.module.security.users.Role
 import org.mindinformatics.ann.framework.module.security.users.User
 import org.mindinformatics.ann.framework.module.security.users.UserRole
 import org.mindinformatics.ann.framework.module.security.utils.DefaultGroupPrivacy
 import org.mindinformatics.ann.framework.module.security.utils.DefaultGroupRoles
 import org.mindinformatics.ann.framework.module.security.utils.DefaultGroupStatus
+import org.mindinformatics.ann.framework.module.security.utils.DefaultUserStatusInGroup
 import org.mindinformatics.ann.framework.module.security.utils.DefaultUsersRoles
 
 
@@ -58,6 +60,15 @@ class BootStrap {
 		}
 		
 		separator();
+		log.info  '** User Status in Group'
+		DefaultUserStatusInGroup.values().each {
+			if(!UserStatusInGroup.findByValue(it.value())) {
+				new UserStatusInGroup(value: it.value(), label: it.label(), description: it.description()).save(failOnError: true)
+				log.info "Initialized: " + it.value()
+			}
+		}
+		
+		separator();
 		log.info  '>> USERS'
 		separator();
 		log.info  '** Users'
@@ -68,20 +79,21 @@ class BootStrap {
 		if(admin==null) {
 			admin = new User(username: adminUsername,
 				password: password, firstName: 'Jack', lastName: 'White',
-				displayName: 'Dr. White', enabled: true).save(failOnError: true)
+				displayName: 'Dr. White', enabled: true, email:'paolo.ciccarese@gmail.com').save(failOnError: true)
 			log.warn  "CHANGE PASSWORD for: " + adminUsername + "!!!"
 		}
 		UserRole.create admin, Role.findByAuthority(DefaultUsersRoles.USER.value())
-		UserRole.create admin, Role.findByAuthority(DefaultUsersRoles.ADMIN.value()), true
+		UserRole.create admin, Role.findByAuthority(DefaultUsersRoles.MANAGER.value())
+		UserRole.create admin, Role.findByAuthority(DefaultUsersRoles.ADMIN.value())
 		
 		if(grailsApplication.config.af.security.initialize.user=='true') { 
 			def userUsername = 'user'
 			log.info "Initializing: " + userUsername
 			def user = User.findByUsername(userUsername);
 			if(user==null) {
-				new User(username: userUsername,
+				user = new User(username: userUsername,
 					password: password, firstName: 'John', lastName: 'Smith', 
-					displayName: 'Dr. Smith', enabled: true).save(failOnError: true)
+					displayName: 'Dr. Smith', enabled: true, email:'yo@yo.com').save(failOnError: true)
 				log.warn  "CHANGE PASSWORD for: " + userUsername + "!!!"
 			}
 			UserRole.create user, Role.findByAuthority(DefaultUsersRoles.USER.value())		

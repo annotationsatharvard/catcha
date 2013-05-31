@@ -1,2 +1,9 @@
 amarok_download.png - GNU Lesser General Public License - http://www.iconlet.com/info/32619_amarok_download_64x64
 amarok_search.png - GNU Lesser General Public License- http://www.iconlet.com/info/32460_amarok_search_64x64
+groups.png - GNU General Public License - http://www.iconlet.com/info/72943_switchuser_32x32
+search.png - GNU Lesser General Public License - http://www.iconlet.com/info/80811_search_32x32
+computer.png - 	GNU General Public License - http://www.iconlet.com/info/49528_computer_32x32
+reload.png - GNU Lesser General Public License - http://www.iconlet.com/info/34642_reload_16x16
+computer_delete.png - Creative Commons Attribution 2.5 - http://www.iconlet.com/info/8330_computer_delete_16x16
+delete_group.png - GNU Lesser General Public License - http://www.iconlet.com/info/12547_delete_group_16x16
+xedit.png - GNU Lesser General Public License - http://www.iconlet.com/info/35177_xedit_22x22

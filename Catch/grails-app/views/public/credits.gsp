@@ -6,22 +6,13 @@
 <!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"><!--<![endif]-->
 <head>
 <meta name="layout" content="public-layout-wide" />
-<title>Home :: ${grailsApplication.config.af.shared.title}</title>
+<title>Sign up :: ${grailsApplication.config.af.shared.title}</title>
 </head>
 <body>
-	<sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER">
-		<g:render template="/shared/administration" plugin="af-shared" /> 
-		<g:render template="/secure/navigation" /> 
-	</sec:ifAnyGranted>
-	<sec:ifNotLoggedIn>
-		<g:render template="/public/navigation" /> 
-	</sec:ifNotLoggedIn>
-	<sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER">
-	</sec:ifAnyGranted>
-	<sec:ifNotLoggedIn>
-		<g:render template="/shared/banner" /> 
-	</sec:ifNotLoggedIn>
-	<g:render template="/shared/content" /> 
+	<g:render template="/public/navigation" /> 
+	
+  	<g:render template="/shared/credits-banner" />
+	<g:render template="/shared/credits-team" /> 
 	<g:render template="/shared/footer" plugin="af-shared" /> 
 	<g:render template="/shared/copyright" plugin="af-shared"  /> 
 </body>

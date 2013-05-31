@@ -30,9 +30,10 @@
             <li><a href="#">Browse annotation</a></li>
           </ul>
         </li>
-        <li class="last"><a href="#">Network</a>
+        <li class="last"><a href="#">About</a>
          <ul>
-            <li><a href="#">Systems</a></li>
+            <li><a href="#">Node info</a></li>
+            <li><a href="#">Credits</a></li>
           </ul>
         </li>
       </ul>

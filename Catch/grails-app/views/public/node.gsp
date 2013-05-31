@@ -6,11 +6,10 @@
 <!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"><!--<![endif]-->
 <head>
 <meta name="layout" content="public-layout-wide" />
-<title>Sign up :: ${grailsApplication.config.af.shared.title}</title>
+<title>Node Info :: ${grailsApplication.config.af.shared.title}</title>
 </head>
 <body>
 	<g:render template="/public/navigation" /> 
-	<div class="wrapper col2">
   	<g:render template="/shared/node-banner" />
 	<g:render template="/shared/signupTerms" /> 
 	<g:render template="/shared/footer" plugin="af-shared" /> 

@@ -92,6 +92,12 @@ log4j = {
 		   
      info    'grails.app', // Necessary for Bootstrap logging
 		   'org.springframework.security'
+		  
+	/*
+	 debug 'org.codehaus.groovy.grails.plugins.springsecurity',
+		   'grails.plugins.springsecurity',
+		   'org.springframework.security'
+    */
 }
 
 // Added by the Spring Security Core plugin:
@@ -100,10 +106,33 @@ grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'org.mindinfor
 grails.plugins.springsecurity.authority.className = 'org.mindinformatics.ann.framework.module.security.users.Role'
 grails.plugins.springsecurity.rememberMe.persistent = true
 grails.plugins.springsecurity.rememberMe.persistentToken.domainClassName = 'org.mindinformatics.ann.framework.module.security.PersistentLogin'
-
+// grails.plugins.springsecurity.failureHandler.defaultFailureUrl = '/'
 grails.plugins.springsecurity.openid.domainClass = 'org.mindinformatics.ann.framework.module.security.OpenID'
 
 grails.plugins.springsecurity.controllerAnnotations.staticRules = [
 	'/secure/**': ['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_USER'],
 	'/administrator/**': ['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_USER']
 ]
+
+/*
+grails.plugins.springsecurity.providerNames = [
+	'daoAuthenticationProvider',
+	'openIdAuthenticationProvider',
+	'anonymousAuthenticationProvider',
+	'rememberMeAuthenticationProvider']
+*/
+
+grails.plugins.springsecurity.ldap.active=false
+/*
+grails.plugins.springsecurity.ldap.active=true
+grails.plugins.springsecurity.ldap.context.managerDn = 'uid=admin,ou=system'
+grails.plugins.springsecurity.ldap.context.managerPassword = 'secret'
+grails.plugins.springsecurity.ldap.context.server = 'ldap://localhost:10389'
+grails.plugins.springsecurity.ldap.authorities.groupSearchBase = 'ou=groups,dc=yourcompany,dc=com'
+grails.plugins.springsecurity.ldap.search.base = 'dc=yourcompany,dc=com'
+grails.plugins.springsecurity.ldap.authorities.retrieveDatabaseRoles = true
+grails.plugins.springsecurity.ldap.useRememberMe = true
+*/
+/*
+grails.plugins.springsecurity.facebook.domain.classname='org.mindinformatics.ann.framework.module.security.FacebookUser'
+*/

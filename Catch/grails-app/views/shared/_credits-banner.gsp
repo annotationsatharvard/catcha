@@ -9,7 +9,7 @@ div.public-formbox {
 
 .public-formbox-inner {
 	width: 450px;
-	border: 3px #FFCC00 solid;
+	border: 1px #999 solid;
 	background: #fff;
 	height: 140px;
 }
@@ -22,6 +22,27 @@ td.public-formbox-title {
 	
 	background: #FFCC00;
 	border-bottom: 1px #cc3300 solid;
+	
+	/* IE10 Consumer Preview */ 
+	background-image: -ms-linear-gradient(bottom, #FFFFFF 0%, #DDDDDD 100%);
+	
+	/* Mozilla Firefox */ 
+	background-image: -moz-linear-gradient(bottom, #FFFFFF 0%, #DDDDDD 100%);
+	
+	/* Opera */ 
+	background-image: -o-linear-gradient(bottom, #FFFFFF 0%, #DDDDDD 100%);
+	
+	/* Webkit (Safari/Chrome 10) */ 
+	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #FFFFFF), color-stop(1, #DDDDDD));
+	
+	/* Webkit (Chrome 11+) */ 
+	background-image: -webkit-linear-gradient(bottom, #FFFFFF 0%, #DDDDDD 100%);
+	
+	/* W3C Markup, IE10 Release Preview */ 
+	background-image: linear-gradient(to top, #FFFFFF 0%, #DDDDDD 100%);
+	
+	border-bottom: 1px #ddd solid;
+	
 	color: #000;
 	padding: 0;
 	padding-left: 10px;
@@ -38,7 +59,7 @@ td.public-formbox-title table {
 }
 
 table.public-formbox-inner  td {
-	border: 0;
+	//border: 0;
 }
 </style>
 <div class="wrapper col2">
@@ -61,13 +82,13 @@ table.public-formbox-inner  td {
                 </tr>
                 <tr>
                     <td valign="top" colspan="2" style="padding: 10px; line-height: 20px;">
-                    	<p style="text-align: justify; line-height: 20px;">${grailsApplication.config.af.shared.name} is a software product developed as part of the
-                    	project ${grailsApplication.config.af.shared.logo.title} that has been partially funded by a grant from Harvard Library Labs.
-                    	${grailsApplication.config.af.shared.name} is build on the technologies developed for the
-                    	<a href="http://annotationframework.org">Domeo Annotation Webtoolkit</a> project. </p>
+                    	<p style="text-align: justify; line-height: 20px;">
+                    		${grailsApplication.config.af.shared.name} has been partially funded by a grant from Harvard Library Labs awarded to Paolo Ciccarese, Phil Desenne and Martin Schreiner.
+                    		${grailsApplication.config.af.shared.name} is build also reusing technologies developed by Paolo Ciccarese for the
+                    		<a href="http://annotationframework.org">Domeo Annotation Web Toolkit</a> project at Massachusetts General Hospital. 
+                    	</p>
                     </td>
-                </tr>
-               
+                </tr>            
             </table>
         </form>
     </div>

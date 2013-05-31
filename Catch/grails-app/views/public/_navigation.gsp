@@ -8,7 +8,8 @@
 		    <ul>
 		    	<g:if test="${menuitem=='home'}"><li class="active"><g:link controller="main" action="index"><span>Home</span></g:link></li></g:if>
 		    	<g:else><li><g:link controller="main" action="index"><span>Home</span></g:link></li></g:else>
-		        <li><g:link controller="secure" action="home"><span>Access</span></g:link></li>
+		        <g:if test="${menuitem=='access'}"><li class="active"><g:link controller="secure" action="home"><span>Access</span></g:link></li></g:if>
+		        <g:else><li><g:link controller="secure" action="home"><span>Access</span></g:link></li></g:else>
 		        <g:if test="${menuitem=='signup'}"><li class="active"><g:link controller="openid" action="auth"><span>Sign Up</span></g:link></li></g:if>
 		        <g:else><li><g:link controller="main" action="signup"><span>Sign Up</span></g:link></li></g:else>
 		        <g:if test="${menuitem=='node'}"><li class="active"><g:link controller="public" action="node"><span>Node</span></g:link></li></g:if>

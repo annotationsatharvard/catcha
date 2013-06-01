@@ -17,32 +17,34 @@
                 <td>
                     <table>
                         <tr>
+                        	<td align="middle">
+                        		<img src="${resource(dir:'images/dashboard',file:'package_system.png',plugin:'af-security')}"/>
+                        	</td>
                             <td align="left" style="text-align: justify; padding-left:20px;"> 
-                            	<ul style="list-style-type: square;">
-	                                <li>
-	                                	This installation is running 
-	                                	the <span style="font-weight: bold;"><g:meta name="app.fullname"/> <g:meta name="app.version"/> (build <g:meta name="app.build"/> - <g:meta name="app.date"/>)</span>.
-	                                </li>
-	                                <li>
-	                                	The instance is administered by <span style="font-weight: bold;">
-		                                <g:if test="${grailsApplication.config.af.node.administrator.name}">
-		                                    ${grailsApplication.config.af.node.administrator.name}
-		                                </g:if>
-		                                <g:else>(anonymous)</g:else>
-		                                at
-		                                <g:if test="${grailsApplication.config.af.node.organization}">
-		                                    ${grailsApplication.config.af.node.organization}.
-		                                </g:if>
-		                                <g:else>(not specified)</g:else>
-		                            </li>
-		                            <li>
-		                                For enquiries please contact <span style="font-weight: bold;">
-		                                <g:if test="${grailsApplication.config.af.node.administrator.email.display}">
-		                                    ${grailsApplication.config.af.node.administrator.email.display}
-		                                </g:if>
-		                                <g:else>(not specified)</g:else>
-		                            </li>
-                                </ul>
+                           		<p>
+                  
+                                	This installation is running 
+                                	the <span style="font-weight: bold;"><g:meta name="app.fullname"/> <g:meta name="app.version"/> (build <g:meta name="app.build"/> - <g:meta name="app.date"/>)</span>.
+                                </p>
+                                <p>
+                                	The instance is administered by <span style="font-weight: bold;">
+	                                <g:if test="${grailsApplication.config.af.node.administrator.name}">
+	                                    ${grailsApplication.config.af.node.administrator.name}
+	                                </g:if>
+	                                <g:else>(anonymous)</g:else>
+	                                at
+	                                <g:if test="${grailsApplication.config.af.node.organization}">
+	                                    ${grailsApplication.config.af.node.organization}.
+	                                </g:if>
+	                                <g:else>(not specified)</g:else>
+	                            </p>
+	                            <p>
+	                                For enquiries please contact <span style="font-weight: bold;">
+	                                <g:if test="${grailsApplication.config.af.node.administrator.email.display}">
+	                                    ${grailsApplication.config.af.node.administrator.email.display}
+	                                </g:if>
+	                                <g:else>(not specified)</g:else>
+	                            </p>
                             </td>
                         </tr>
                     </table>

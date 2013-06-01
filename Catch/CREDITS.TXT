@@ -7,3 +7,4 @@ reload.png - GNU Lesser General Public License - http://www.iconlet.com/info/346
 computer_delete.png - Creative Commons Attribution 2.5 - http://www.iconlet.com/info/8330_computer_delete_16x16
 delete_group.png - GNU Lesser General Public License - http://www.iconlet.com/info/12547_delete_group_16x16
 xedit.png - GNU Lesser General Public License - http://www.iconlet.com/info/35177_xedit_22x22
+package_system.png - GNU Lesser General Public License - http://www.iconlet.com/info/10946_package_system_32x32

@@ -10,7 +10,6 @@
 </head>
 <body>
 	<g:render template="/public/navigation" /> 
-	
   	<g:render template="/shared/credits-banner" />
 	<g:render template="/shared/credits-team" /> 
 	<g:render template="/shared/footer" plugin="af-shared" /> 

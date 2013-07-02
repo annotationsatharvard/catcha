@@ -111,7 +111,8 @@ grails.plugins.springsecurity.openid.domainClass = 'org.mindinformatics.ann.fram
 
 grails.plugins.springsecurity.controllerAnnotations.staticRules = [
 	'/secure/**': ['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_USER'],
-	'/administrator/**': ['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_USER']
+	'/administrator/**': ['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_USER'],
+	'/dashboard/**': ['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_USER']
 ]
 
 /*

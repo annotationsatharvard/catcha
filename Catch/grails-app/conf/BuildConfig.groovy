@@ -8,6 +8,7 @@ grails.project.source.level = 1.6
 
 grails.plugin.location.'af-shared' = '../../Domeo/AfShared'
 grails.plugin.location.'af-security' = '../../annotationframework/AfSecurity'
+grails.plugin.location.'af-persistence' = '../../annotationframework/AfPersistence'
 
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
@@ -32,18 +33,32 @@ grails.project.dependency.resolution = {
         //mavenRepo "http://repository.codehaus.org"
         //mavenRepo "http://download.java.net/maven/2/"
         //mavenRepo "http://repository.jboss.com/maven2/"
+		mavenRepo "http://repo.aduna-software.org/maven2/releases/"
+		mavenRepo "https://repository.jboss.org/nexus/content/repositories/thirdparty-releases"
     }
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
 		//provided 'mysql:mysql-connector-java:5.1.13'
 		//runtime 'mysql:mysql-connector-java:5.1.13'
-        runtime 'mysql:mysql-connector-java:5.1.16'
+        runtime 'mysql:mysql-connector-java:5.1.16' 
+		
+		compile "org.apache.marmotta:sesame-tools-rio-jsonld:3.0.0-incubating"
+		compile "org.semweb4j:rdf2go.impl.sesame:4.8.2"
+		compile "org.semweb4j:rdf2go.api:4.8.2"
+		
+		runtime "org.semweb4j:rdf2go.impl.sesame:4.8.2"
+		runtime "org.semweb4j:rdf2go.api:4.8.2"
+		
+		//runtime "org.semweb4j:rdf2go.impl.base:4.6.2"
+		//compile "org.openrdf:openrdf-sesame-onejar-osgi:2.1.2"
+		//compile "org.openrdf.sesame:sesame-query:2.7.2"
     }
 
     plugins {
         runtime ":hibernate:$grailsVersion"
         runtime ":jquery:1.7.1"
         runtime ":resources:1.1.6"
+		
 		//compile "org.grails.plugins:spring-security-facebook:0.11"
 
         // Uncomment these (or add new ones) to enable additional resources capabilities

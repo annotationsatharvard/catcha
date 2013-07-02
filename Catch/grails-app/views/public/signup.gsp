@@ -8,7 +8,7 @@
 <meta name="layout" content="public-layout-wide" />
 <title>Sign up :: ${grailsApplication.config.af.shared.title}</title>
 </head>
-<body>
+<body >
 	<g:render template="/public/navigation" /> 
 	<div class="wrapper col2">
   <div id="featured_slide" >

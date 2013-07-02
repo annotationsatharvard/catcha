@@ -21,7 +21,7 @@
         </li>
         <li><a href="style-demo.html">Share</a>
           <ul>
-            <li><a href="#">Upload annotation</a></li>
+            <li><g:link controller="secure" action="upload">Upload annotation</g:link></li>
           </ul>
         </li>
         <li><a href="full-width.html">View</a>

@@ -1,7 +1,7 @@
 <div class="wrapper col2">
   <div id="subtitle_slide">
     <div style="padding-left:10px;">
-      <table width="980px;">
+      <table id="upload_banner" width="980px;">
       	<tr>
 	        <td><img id="uploadIcon"  src="${resource(dir: 'images/public', file: 'amarok_share.png')}" alt="" />
 	        </td>
@@ -19,7 +19,7 @@
 	            <p style="display: block;">Against the Open Annotation model. </p>
 	          </div>
 	        </td> 
-	        <td><img src="${resource(dir: 'images/public', file: 'amarok_download.png')}" alt="" />
+	        <td><img id="persistIcon" src="${resource(dir: 'images/public', file: 'amarok_download.png')}" alt="" />
 	          </td>
 	        <td>
 	          <div class="introtext">
@@ -28,13 +28,7 @@
 	          </div>
 	        </td>  
       	</tr>
-      	<tr>
-      		<td colspan="2"><div align="center">	
-     		<input id="fileupload" type="file" name="annotation">
-     		<div id="files"></div>
-  			</div></td>
-      		<td colspan="4">&nbsp;</td>
-      	</tr>
+      
       	<tr>
       		<td colspan="2">
       		<div id="progress">
@@ -45,7 +39,17 @@
       			<div id="validationBar" style="background: transparent; width: 100%; height:18px;">&nbsp;</div>
       			<div id="validationMessage" style="position:relative; top:-16px; left: 2px; color: white;"></div>
       		</td>
-      		<td></td>
+      		<td colspan="2">
+      			<div id="persistBar" style="background: transparent; width: 100%; height:18px;">&nbsp;</div>
+      			<div id="persistMessage" style="position:relative; top:-16px; left: 2px; color: white;"></div>
+      		</td>
+      	</tr>
+      		<tr>
+      		<td colspan="2"><div align="center">	
+     		<input id="fileupload" type="file" name="annotation">
+     		<div id="files"></div>
+  			</div></td>
+      		<td colspan="4">&nbsp;</td>
       	</tr>
       </table>
 	</div>

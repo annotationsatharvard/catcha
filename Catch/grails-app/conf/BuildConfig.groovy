@@ -6,9 +6,9 @@ grails.project.target.level = 1.6
 grails.project.source.level = 1.6
 //grails.project.war.file = "target/${appName}-${appVersion}.war"
 
-grails.plugin.location.'af-shared' = '../../Domeo/AfShared'
-grails.plugin.location.'af-security' = '../../annotationframework/AfSecurity'
-grails.plugin.location.'af-persistence' = '../../annotationframework/AfPersistence'
+grails.plugin.location.'af-shared' = '../annotationframework/AfShared'
+grails.plugin.location.'af-security' = '../annotationframework/AfSecurity'
+grails.plugin.location.'af-persistence' = '../annotationframework/AfPersistence'
 
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
@@ -67,5 +67,7 @@ grails.project.dependency.resolution = {
         //runtime ":yui-minify-resources:0.1.4"
 
         build ":tomcat:$grailsVersion"
+
+        runtime ":cors:1.1.0"
     }
 }

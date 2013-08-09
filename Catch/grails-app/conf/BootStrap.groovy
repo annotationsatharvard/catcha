@@ -1,4 +1,6 @@
-
+import grails.converters.JSON
+import org.mindinformatics.ann.framework.module.persistence.Annotation
+import org.mindinformatics.ann.framework.module.persistence.AnnotationRange
 import org.mindinformatics.ann.framework.module.security.groups.GroupPrivacy
 import org.mindinformatics.ann.framework.module.security.groups.GroupRole
 import org.mindinformatics.ann.framework.module.security.groups.GroupStatus
@@ -19,6 +21,31 @@ class BootStrap {
 	def springSecurityService
 	
     def init = { servletContext ->
+
+        //[ new AnnotationMarshaller(), new AnnotationRangeMarshaller()].each { it.register() }
+
+        JSON.registerObjectMarshaller(Annotation) { annotation ->
+            return [
+                    id: annotation.id,
+                    text: annotation.text,
+                    quote: annotation.quote,
+                    uri: annotation.uri,
+                    ranges: annotation.ranges
+            ]
+        }
+
+        JSON.registerObjectMarshaller(AnnotationRange) { range ->
+            return [
+                    id: range.id,
+                    start: range.start,
+                    startOffset: range.startOffset,
+                    end: range.end,
+                    endOffset: range.endOffset
+            ]
+        }
+
+
+
 		String password = springSecurityService.encodePassword('password')
 		
 		separator();

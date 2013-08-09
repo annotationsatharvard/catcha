@@ -21,10 +21,11 @@
         </li>
         <li><a href="style-demo.html">Share</a>
           <ul>
-            <li><g:link controller="secure" action="upload">Upload annotation</g:link></li>
+          	 <li><g:link controller="secure" action="validate">Open Annotation Validator</g:link></li>
+             <li><g:link controller="secure" action="upload">Upload annotation</g:link></li>
           </ul>
         </li>
-        <li><a href="full-width.html">View</a>
+        <li><a href="full-width.html">Explore</a>
           <ul>
             <li><a href="#">Search annotation</a></li>
             <li><a href="#">Browse annotation</a></li>

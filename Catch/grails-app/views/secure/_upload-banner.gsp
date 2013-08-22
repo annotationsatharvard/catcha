@@ -23,7 +23,7 @@
 	          </td>
 	        <td>
 	          <div class="introtext">
-	            <p class="title">Persist</p>
+	            <p class="title">Save</p>
 	            <p style="display: block;">Save your annotation in the hub.</p>
 	          </div>
 	        </td>  
@@ -33,7 +33,7 @@
       		<td colspan="2">
       		<div id="progress">
 		    		<div class="bar" style="width: 0%;"></div>
-		    		<div id="message" style="position:relative; top:-18px; left: 3px; color: white;"></div>
+		    		<div id="uploadMessage" style="position:relative; top:-18px; left: 3px; color: white;"></div>
 			</div>
       		<td colspan="2">
       			<div id="validationBar" style="background: transparent; width: 100%; height:18px;">&nbsp;</div>
@@ -45,11 +45,18 @@
       		</td>
       	</tr>
       		<tr>
-      		<td colspan="2"><div align="center">	
-     		<input id="fileupload" type="file" name="annotation">
-     		<div id="files"></div>
-  			</div></td>
-      		<td colspan="4">&nbsp;</td>
+      		<td colspan="2">
+      			<div align="center">	
+     				<input id="fileupload" type="file" name="annotation">
+     				<div id="files"></div>
+  				</div>
+  			</td>
+      		<td colspan="2">&nbsp;</td>
+      		<td colspan="2">
+      			<div id="persistButtonPanel" style="display:none;">
+      				<button type="button" onclick="persistAnnotation()">Persist!</button> 
+      			</div>	
+      		</td>
       	</tr>
       </table>
 	</div>

@@ -35,6 +35,7 @@
          <ul>
             <li><a href="#">Node info</a></li>
             <li><a href="#">Credits</a></li>
+            <li><g:link controller="secure" action="stats">Stats</g:link></li>
           </ul>
         </li>
       </ul>

@@ -45,11 +45,12 @@ grails.project.dependency.resolution = {
 		compile "org.apache.marmotta:sesame-tools-rio-jsonld:3.0.0-incubating"
 		compile "org.semweb4j:rdf2go.impl.sesame:4.8.2"
 		compile "org.semweb4j:rdf2go.api:4.8.2"
-		
-		runtime "org.semweb4j:rdf2go.impl.sesame:4.8.2"
-		runtime "org.semweb4j:rdf2go.api:4.8.2"
-		
-		//runtime "org.semweb4j:rdf2go.impl.base:4.6.2"
+
+        // Commented this out because this dependency should be brought in with the compile scope above.
+		//runtime "org.semweb4j:rdf2go.impl.sesame:4.8.2"
+		//runtime "org.semweb4j:rdf2go.api:4.8.2"
+
+        //runtime "org.semweb4j:rdf2go.impl.base:4.6.2"
 		//compile "org.openrdf:openrdf-sesame-onejar-osgi:2.1.2"
 		//compile "org.openrdf.sesame:sesame-query:2.7.2"
     }
@@ -69,5 +70,7 @@ grails.project.dependency.resolution = {
         build ":tomcat:$grailsVersion"
 
         runtime ":cors:1.1.0"
+
+        compile ":joda-time:1.4"
     }
 }

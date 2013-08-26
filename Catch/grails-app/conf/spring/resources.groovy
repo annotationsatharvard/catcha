@@ -10,4 +10,11 @@ beans = {
 	iTripleStorePersistence(InMemoryTripleStorePersistenceImpl) { bean ->
 		bean.autowire = 'byName'
 	}
+
+    annotationConverter org.mindinformatics.ann.framework.module.converter.AnnotationConverter
+    conversionService (org.springframework.context.support.ConversionServiceFactoryBean) { bean ->
+        //    bean.autowire = 'byName'
+        converters = [ annotationConverter ]
+    }
+
 }

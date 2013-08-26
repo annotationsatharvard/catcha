@@ -22,18 +22,23 @@ class BootStrap {
 	
     def init = { servletContext ->
 
+        // A better way to register the marshallers
         //[ new AnnotationMarshaller(), new AnnotationRangeMarshaller()].each { it.register() }
 
+        // Decided to do it this way to make it easier to customize
         JSON.registerObjectMarshaller(Annotation) { annotation ->
             return [
                     id: annotation.id,
-                    text: annotation.text,
-                    quote: annotation.quote,
+                    //text: annotation.text,
+                    //quote: annotation.quote,
                     uri: annotation.uri,
-                    ranges: annotation.ranges
+                    json: annotation.json
+                    //ranges: annotation.ranges,
+
             ]
         }
 
+        /**
         JSON.registerObjectMarshaller(AnnotationRange) { range ->
             return [
                     id: range.id,
@@ -43,6 +48,7 @@ class BootStrap {
                     endOffset: range.endOffset
             ]
         }
+        */
 
 
 

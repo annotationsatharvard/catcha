@@ -5,6 +5,7 @@ import org.joda.time.format.ISODateTimeFormat
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
+import org.mindinformatics.ann.framework.module.converter.AnnotationConverter;
 import org.mindinformatics.ann.framework.module.persistence.Annotation
 
 import java.text.SimpleDateFormat

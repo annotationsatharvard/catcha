@@ -10,7 +10,7 @@
 </head>
 <body>
 	<sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_MANAGER">
-		<g:render template="/shared/administration" plugin="af-shared" /> 
+		<g:render template="/shared/administration" plugin="af-security" /> 
 		<g:render template="/secure/navigation" /> 
 	</sec:ifAnyGranted>
 	<sec:ifNotLoggedIn>

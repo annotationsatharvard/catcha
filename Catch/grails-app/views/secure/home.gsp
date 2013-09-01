@@ -11,7 +11,7 @@
 <title>Home :: ${grailsApplication.config.af.shared.title}</title>
 </head>
 <body>
-	<g:render template="/shared/administration" plugin="af-shared" /> 
+	<g:render template="/shared/administration" plugin="af-security" /> 
 	<g:render template="/secure/navigation" /> 
 	<g:render template="/shared/banner" /> 
 	<g:render template="/shared/content" /> 

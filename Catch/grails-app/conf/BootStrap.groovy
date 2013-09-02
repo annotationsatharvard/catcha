@@ -5,6 +5,7 @@ import org.mindinformatics.ann.framework.module.security.groups.GroupPrivacy
 import org.mindinformatics.ann.framework.module.security.groups.GroupRole
 import org.mindinformatics.ann.framework.module.security.groups.GroupStatus
 import org.mindinformatics.ann.framework.module.security.groups.UserStatusInGroup
+import org.mindinformatics.ann.framework.module.security.systems.SystemApi
 import org.mindinformatics.ann.framework.module.security.users.Role
 import org.mindinformatics.ann.framework.module.security.users.User
 import org.mindinformatics.ann.framework.module.security.users.UserRole
@@ -26,6 +27,7 @@ class BootStrap {
         //[ new AnnotationMarshaller(), new AnnotationRangeMarshaller()].each { it.register() }
 
         // Decided to do it this way to make it easier to customize
+        /*
         JSON.registerObjectMarshaller(Annotation) { annotation ->
             return [
                     id: annotation.id,
@@ -37,7 +39,7 @@ class BootStrap {
 
             ]
         }
-
+        */
         /**
         JSON.registerObjectMarshaller(AnnotationRange) { range ->
             return [
@@ -118,7 +120,23 @@ class BootStrap {
 		UserRole.create admin, Role.findByAuthority(DefaultUsersRoles.USER.value())
 		UserRole.create admin, Role.findByAuthority(DefaultUsersRoles.MANAGER.value())
 		UserRole.create admin, Role.findByAuthority(DefaultUsersRoles.ADMIN.value())
-		
+
+
+
+
+        def firstApp =
+            new SystemApi(name: "My First App", shortName: "myfirstapp", description: "My First Application",
+                    apikey: "0cbfa370-b73c-4e3a-ae46-582df284b7c3", enabled: true, accessToPublicData: true, createdBy: admin).save(flush: true)
+
+
+        def secondApp =
+            new SystemApi(name: "My Second App", shortName: "mysecondapp", description: "My Second Application",
+                    apikey: "80404495-7196-4879-8719-54c21f44a31a", enabled: true, accessToPublicData: true, createdBy: admin).save(flush: true)
+
+        def thirdApp =
+            new SystemApi(name: "My Third App", shortName: "mythirddapp", description: "My Third Application",
+                    apikey: "4c7f4d1c-8ac4-4e9f-84c8-b271c57fcac4", enabled: true, accessToPublicData: true, createdBy: admin).save(flush: true)
+
 		if(grailsApplication.config.af.security.initialize.user=='true') { 
 			def userUsername = 'user'
 			log.info "Initializing: " + userUsername

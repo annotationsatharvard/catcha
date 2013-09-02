@@ -11,6 +11,9 @@ beans = {
 		bean.autowire = 'byName'
 	}
 
+    //annotatorToOpenAnnotationConverter (org.mindinformatics.ann.framework.module.converter.AnnotatorToOpenAnnotationConverter) { bean ->
+    //
+    //}
     annotationConverter org.mindinformatics.ann.framework.module.converter.AnnotationConverter
     conversionService (org.springframework.context.support.ConversionServiceFactoryBean) { bean ->
         //    bean.autowire = 'byName'

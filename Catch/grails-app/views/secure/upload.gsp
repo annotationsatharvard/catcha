@@ -17,7 +17,7 @@
 </style>
 </head>
 <body>
-	<g:render template="/shared/administration" plugin="af-shared" /> 
+	<g:render template="/shared/administration" plugin="af-security" /> 
 	<g:render template="/secure/navigation" /> 
 	<g:render template="/secure/upload-banner" /> 
 	<g:render template="/uploads/upload-content"  plugin="af-persistence"/> 

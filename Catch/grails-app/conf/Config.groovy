@@ -66,6 +66,28 @@ environments {
     production {
         grails.logging.jul.usebridge = false
         // TODO: grails.serverURL = "http://www.changeme.com"
+
+        af.shared.name = "CATCH-A"
+        af.shared.title = "CATCH-A, Annotations at Harvard"
+
+        af.shared.logo.title = "CATCH"
+        af.shared.logo.subtitle = "Annotation Hub"
+
+        af.shared.copyright.label = "Annotations @ Harvard"
+        af.shared.copyright.link = "http://www.annotations.harvard.edu/"
+
+        af.security.initialize.user=true
+        af.security.moderation.user.request=true
+
+        af.node.organization="Massachusetts General Hospital"
+        af.node.administrator.name="Dr. Paolo Ciccarese"
+        af.node.administrator.email.to = "paolo.ciccarese@gmail.com"
+        af.node.administrator.email.display= "paolo dot ciccarese at gmail.com"
+
+        //af.node.base.url=http://purl.org/catcha/1/
+        af.node.base.url = "http://catch.aws.af.com/"
+
+
     }
 }
 

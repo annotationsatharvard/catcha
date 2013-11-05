@@ -45,6 +45,11 @@ grails.project.dependency.resolution = {
 		compile "org.apache.marmotta:sesame-tools-rio-jsonld:3.0.0-incubating"
 		compile "org.semweb4j:rdf2go.impl.sesame:4.8.2"
 		compile "org.semweb4j:rdf2go.api:4.8.2"
+		
+		compile ("org.apache.jena:jena-core:2.11.0") {
+			excludes 'slf4j-api', 'xercesImpl'
+		}
+		compile ("org.apache.jena:jena-arq:2.9.3")
 
         // Commented this out because this dependency should be brought in with the compile scope above.
 		//runtime "org.semweb4j:rdf2go.impl.sesame:4.8.2"

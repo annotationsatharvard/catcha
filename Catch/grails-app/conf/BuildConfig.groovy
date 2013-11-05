@@ -71,6 +71,9 @@ grails.project.dependency.resolution = {
 
         runtime ":cors:1.1.0"
 
-        compile ":joda-time:1.4"
+        //compile ":joda-time:1.4"
+		
+		compile ':spring-security-core:2.0-RC2'
+		compile ":spring-security-openid:2.0-RC2"
     }
 }

@@ -69,28 +69,21 @@ environments {
     }
 }
 
-// log4j configuration
 log4j = {
-    // Example of changing the log pattern for the default console
-    // appender:
-    //
-    //appenders {
-    //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
-    //}
 
-    error  'org.codehaus.groovy.grails.web.servlet',  //  controllers
-           'org.codehaus.groovy.grails.web.pages', //  GSP
-           'org.codehaus.groovy.grails.web.sitemesh', //  layouts
+    error  'org.codehaus.groovy.grails.web.servlet',  		// controllers
+           'org.codehaus.groovy.grails.web.pages', 			// GSP
+           'org.codehaus.groovy.grails.web.sitemesh', 		// layouts
            'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
-           'org.codehaus.groovy.grails.web.mapping', // URL mapping
-           'org.codehaus.groovy.grails.commons', // core / classloading
-           'org.codehaus.groovy.grails.plugins', // plugins
-           'org.codehaus.groovy.grails.orm.hibernate', // hibernate integration
+           'org.codehaus.groovy.grails.web.mapping', 		// URL mapping
+           'org.codehaus.groovy.grails.commons', 			// core / classloading
+           'org.codehaus.groovy.grails.plugins', 			// plugins
+           'org.codehaus.groovy.grails.orm.hibernate', 		// hibernate integration
            'org.springframework',
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 		   
-     info    'grails.app', // Necessary for Bootstrap logging
+     info  'grails.app', 									// Necessary for Bootstrap logging
 		   'org.springframework.security'
 		  
 	/*
@@ -100,48 +93,31 @@ log4j = {
     */
 }
 
-// Added by the Spring Security Core plugin:
-grails.plugins.springsecurity.userLookup.userDomainClassName = 'org.mindinformatics.ann.framework.module.security.users.User'
-grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'org.mindinformatics.ann.framework.module.security.users.UserRole'
-grails.plugins.springsecurity.authority.className = 'org.mindinformatics.ann.framework.module.security.users.Role'
-grails.plugins.springsecurity.rememberMe.persistent = true
-grails.plugins.springsecurity.rememberMe.persistentToken.domainClassName = 'org.mindinformatics.ann.framework.module.security.PersistentLogin'
-// grails.plugins.springsecurity.failureHandler.defaultFailureUrl = '/'
-grails.plugins.springsecurity.openid.domainClass = 'org.mindinformatics.ann.framework.module.security.OpenID'
+// Spring Security Configuration
+// The following have to be defined in the Config.groovy of the main application in order for Spring Security to work properly
+// -------------------------------------------------------------------------------------------------------------------------------------------
+grails.plugin.springsecurity.userLookup.userDomainClassName 			= 'org.mindinformatics.ann.framework.module.security.users.User'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName 			= 'org.mindinformatics.ann.framework.module.security.users.UserRole'
+grails.plugin.springsecurity.authority.className 						= 'org.mindinformatics.ann.framework.module.security.users.Role'
 
-grails.plugins.springsecurity.controllerAnnotations.staticRules = [
-	'/secure/**': ['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_USER'],
-	'/administrator/**': ['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_USER'],
-	'/dashboard/**': ['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_USER']
+grails.plugin.springsecurity.rememberMe.persistent 						= true
+grails.plugin.springsecurity.rememberMe.persistentToken.domainClassName = 'org.mindinformatics.ann.framework.module.security.PersistentLogin'
+grails.plugin.springsecurity.openid.domainClass 						= 'org.mindinformatics.ann.framework.module.security.OpenID'
+
+grails.plugin.springsecurity.controllerAnnotations.staticRules = [
+	'/info'					: ['permitAll'],
+	'/main/**'				: ['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_USER'],
+	'/secure/**'			: ['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_USER'],
+	'/upload/**'			: ['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_USER'],
+	'/administrator/**'		: ['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_USER'],
+	'/dashboard/**'			: ['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_USER']
 ]
-
-/*
-grails.plugins.springsecurity.providerNames = [
-	'daoAuthenticationProvider',
-	'openIdAuthenticationProvider',
-	'anonymousAuthenticationProvider',
-	'rememberMeAuthenticationProvider']
-*/
-
-grails.plugins.springsecurity.ldap.active=false
-/*
-grails.plugins.springsecurity.ldap.active=true
-grails.plugins.springsecurity.ldap.context.managerDn = 'uid=admin,ou=system'
-grails.plugins.springsecurity.ldap.context.managerPassword = 'secret'
-grails.plugins.springsecurity.ldap.context.server = 'ldap://localhost:10389'
-grails.plugins.springsecurity.ldap.authorities.groupSearchBase = 'ou=groups,dc=yourcompany,dc=com'
-grails.plugins.springsecurity.ldap.search.base = 'dc=yourcompany,dc=com'
-grails.plugins.springsecurity.ldap.authorities.retrieveDatabaseRoles = true
-grails.plugins.springsecurity.ldap.useRememberMe = true
-*/
-/*
-grails.plugins.springsecurity.facebook.domain.classname='org.mindinformatics.ann.framework.module.security.FacebookUser'
-*/
+// -------------------------------------------------------------------------------------------------------------------------------------------
 
 // origin, authorization, accept, content-type, x-requested-with
 // cors.expose.headers = 'X-app-header1,X-app-header2'
 cors.headers = [
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': 'content-length, content-type, x-annotator-auth-token, x-requested-with'
+    'Access-Control-Allow-Origin'	: '*',
+    'Access-Control-Allow-Headers'	: 'content-length, content-type, x-annotator-auth-token, x-requested-with'
 ]
 cors.expose.headers = 'x-annotator-auth-token'

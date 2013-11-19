@@ -140,7 +140,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 // origin, authorization, accept, content-type, x-requested-with
 // cors.expose.headers = 'X-app-header1,X-app-header2'
 cors.headers = [
-    'Access-Control-Allow-Origin'	: '*',
-    'Access-Control-Allow-Headers'	: 'content-length, content-type, x-annotator-auth-token, x-requested-with'
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'content-length, content-type, x-annotator-auth-token, x-requested-with, x-csrftoken'
 ]
 cors.expose.headers = 'x-annotator-auth-token'

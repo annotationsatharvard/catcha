@@ -8,6 +8,11 @@ class UrlMappings {
 				// apply constraints here
 			}
 		}
+
+        "/api/$action/$id?"{
+            controller = 'annotator'
+        }
+
 		"/login/auth" {
 			controller = 'openId'
 			action = 'auth'

@@ -14,7 +14,6 @@ class AuthTokenFilters {
                 }
                 def token = request.getHeader("x-annotator-auth-token")
                 if (!token) {
-                    //throw new Exception("Missing token")
                     response.status = 401
                     render ("You are not authorized to access annotations without a valid token")
                     return false
@@ -31,20 +30,29 @@ class AuthTokenFilters {
                         println "state: " + jwsObject.state
                         println "signature: " + jwsObject.signature
 
-                        // Make sure an API exists with this name
+                        // 1. Make sure an API exists with this name
                         def consumerKey = jwsObject.payload.toJSONObject().consumerKey
+                        println "consumerKey: " + consumerKey
                         def systemApi = SystemApi.findByApikey(consumerKey)
                         if (!systemApi) {
-                            throw new Exception("There's no consumer registered with consumerKey: " + consumerKey)
+                            //throw new Exception("There's no consumer registered with consumerKey: " + consumerKey)
+                            response.status = 401
+                            render ("You are not authorized to access annotations without a valid consumer key " + consumerKey)
+                            return false
                         }
 
-                        // Make sure the user is valid
-                        // Make sure there's an issue time and that the token has not expired
+                        // 2. Make sure the user is valid
+
+                        // 3. Make sure there's an issue time and that the token has not expired
                         //def now = new Date()
 
 
                     } catch (ParseException e ){
-                        throw new Exception("Error parsing JSON web token: " + e.message)
+                        //throw new Exception("Error parsing JSON web token: " + e.message)
+                        response.status = 401
+                        render ("You are not authorized to access annotations without a valid token.  Could not parse token " + token + ": " + e.message + ".")
+                        return false
+
                     }
                 }
 

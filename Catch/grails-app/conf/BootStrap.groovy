@@ -117,10 +117,21 @@ class BootStrap {
 				displayName: 'Dr. White', enabled: true, email:'paolo.ciccarese@gmail.com').save(failOnError: true)
 			log.warn  "CHANGE PASSWORD for: " + adminUsername + "!!!"
 		}
-		UserRole.create admin, Role.findByAuthority(DefaultUsersRoles.USER.value())
-		UserRole.create admin, Role.findByAuthority(DefaultUsersRoles.MANAGER.value())
-		UserRole.create admin, Role.findByAuthority(DefaultUsersRoles.ADMIN.value())
 
+        // Prevents duplicate key exception when we try to add new role to user
+        def roleUser = Role.findByAuthority(DefaultUsersRoles.USER.value())
+        def roleManager = Role.findByAuthority(DefaultUsersRoles.MANAGER.value())
+        def roleAdmin = Role.findByAuthority(DefaultUsersRoles.ADMIN.value()
+        )
+        if (!admin.authorities.contains(roleUser)) {
+            UserRole.create admin, Role.findByAuthority(DefaultUsersRoles.USER.value())
+        }
+        if (!admin.authorities.contains(roleAdmin)) {
+            UserRole.create admin, roleAdmin
+        }
+        if (!admin.authorities.contains(roleManager)) {s
+            UserRole.create admin, roleManager
+        }
 
 
 
@@ -147,7 +158,11 @@ class BootStrap {
 					displayName: 'Dr. Smith', enabled: true, email:'yo@yo.com').save(failOnError: true)
 				log.warn  "CHANGE PASSWORD for: " + userUsername + "!!!"
 			}
-			UserRole.create user, Role.findByAuthority(DefaultUsersRoles.USER.value())		
+
+            // Prevents duplicate key exception when we try to add new role to user
+            if (!user.authorities.contains(roleUser)) {
+    			UserRole.create user, roleUser
+            }
 		}	
 		
 		separator();

@@ -134,7 +134,8 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/tripleStore/**'		: ['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_USER'],
 	'/administrator/**'		: ['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_USER'],
     '/annotation/**'		: ['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_USER'],
-	'/dashboard/**'			: ['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_USER']
+	'/dashboard/**'			: ['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_USER'],
+    '/dbconsole/**'			: ['ROLE_ADMIN']
 ]
 // -------------------------------------------------------------------------------------------------------------------------------------------
 

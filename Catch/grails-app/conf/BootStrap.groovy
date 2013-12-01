@@ -124,12 +124,12 @@ class BootStrap {
         def roleAdmin = Role.findByAuthority(DefaultUsersRoles.ADMIN.value()
         )
         if (!admin.authorities.contains(roleUser)) {
-            UserRole.create admin, Role.findByAuthority(DefaultUsersRoles.USER.value())
+            UserRole.create admin, roleUser
         }
         if (!admin.authorities.contains(roleAdmin)) {
             UserRole.create admin, roleAdmin
         }
-        if (!admin.authorities.contains(roleManager)) {s
+        if (!admin.authorities.contains(roleManager)) {
             UserRole.create admin, roleManager
         }
 

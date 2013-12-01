@@ -64,6 +64,7 @@ environments {
         grails.logging.jul.usebridge = true
     }
     production {
+        grails.dbconsole.enabled = true
         grails.logging.jul.usebridge = false
         // TODO: grails.serverURL = "http://www.changeme.com"
 
@@ -135,7 +136,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/administrator/**'		: ['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_USER'],
     '/annotation/**'		: ['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_USER'],
 	'/dashboard/**'			: ['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_USER'],
-    '/dbconsole/**'			: ['ROLE_ADMIN']
+    '/dbconsole/**'			: ['permitAll']
 ]
 // -------------------------------------------------------------------------------------------------------------------------------------------
 

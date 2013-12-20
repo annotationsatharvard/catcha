@@ -139,6 +139,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
     '/dbconsole/**'			: ['permitAll']
 ]
 // -------------------------------------------------------------------------------------------------------------------------------------------
+// cors:1.1.0
 
 // origin, authorization, accept, content-type, x-requested-with
 // cors.expose.headers = 'X-app-header1,X-app-header2'
@@ -147,3 +148,18 @@ cors.headers = [
     'Access-Control-Allow-Headers': 'content-length, content-type, x-annotator-auth-token, x-requested-with, x-csrftoken'
 ]
 cors.expose.headers = 'x-annotator-auth-token'
+
+// -------------------------------------------------------------------------------------------------------------------------------------------
+// httplogger:1.1
+//grails.plugin.httplogger.enabled = true
+//environments {
+//    test {
+//        grails.plugin.httplogger.enabled = false
+//    }
+//}
+//
+//grails.plugin.httplogger.headers = 'content-length, content-type, x-annotator-auth-token, x-requested-with, x-csrftoken'
+//list of headers to log by the default HttpLogger implementation
+//
+//grails.plugin.httplogger.includeUrls = ['/api/**',]
+//grails.plugin.httplogger.excludeUrls = ['/css/**', '/**/*.js']

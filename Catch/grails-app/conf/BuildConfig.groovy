@@ -75,10 +75,14 @@ grails.project.dependency.resolution = {
         build ":tomcat:$grailsVersion"
 
         runtime ":cors:1.1.0"
+        //runtime ":httplogger:1.1"
+
 
         //compile ":joda-time:1.4"
 		
 		compile ':spring-security-core:2.0-RC2'
 		compile ":spring-security-openid:2.0-RC2"
+        compile ":build-test-data:2.0.8"
+
     }
 }

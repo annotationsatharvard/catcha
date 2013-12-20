@@ -19,5 +19,5 @@ beans = {
         //    bean.autowire = 'byName'
         converters = [ annotationConverter ]
     }
-
+    customPropertyEditorRegistrar(org.mindinformatics.ann.framework.module.propertyeditors.CustomPropertyEditorRegistrar)
 }

@@ -123,6 +123,9 @@ grails.plugin.springsecurity.userLookup.userDomainClassName 			= 'org.mindinform
 grails.plugin.springsecurity.userLookup.authorityJoinClassName 			= 'org.mindinformatics.ann.framework.module.security.users.UserRole'
 grails.plugin.springsecurity.authority.className 						= 'org.mindinformatics.ann.framework.module.security.users.Role'
 
+// Default since spring-security-core:2.0-RC2
+grails.plugin.springsecurity.password.algorithm 						= 'bcrypt' 
+
 grails.plugin.springsecurity.rememberMe.persistent 						= true
 grails.plugin.springsecurity.rememberMe.persistentToken.domainClassName = 'org.mindinformatics.ann.framework.module.security.PersistentLogin'
 grails.plugin.springsecurity.openid.domainClass 						= 'org.mindinformatics.ann.framework.module.security.OpenID'

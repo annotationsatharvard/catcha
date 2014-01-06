@@ -8,10 +8,6 @@ class AuthTokenFilters {
     def filters = {
         all(controller: 'annotator', action: '*') {
             before = {
-                println "controller: " + controllerName + ", action: " + actionName
-                request.headerNames.each {
-                    println "HEADER " + it
-                }
                 def token = request.getHeader("x-annotator-auth-token")
                 if (!token) {
                     response.status = 401
@@ -45,18 +41,30 @@ class AuthTokenFilters {
 
                         // 3. Make sure there's an issue time and that the token has not expired
                         //def now = new Date()
-
-
-                    } catch (ParseException e ){
+                    }
+                    catch (ParseException e){
+                        println("Error parsing JSON web token ${token}: " + e.message)
+                        log.error("Error parsing JSON web token ${token}: " + e.message, e)
                         //throw new Exception("Error parsing JSON web token: " + e.message)
-                        response.status = 401
-                        render ("You are not authorized to access annotations without a valid token.  Could not parse token " + token + ": " + e.message + ".")
+                        //response.status = 401
+                        //render ("You are not authorized to access annotations without a valid token.  Could not parse token " + token + " due to error: " + e.message + ".")
                         return false
-
+                    }
+                    catch (NoSuchMethodError e) {
+                        println("No such method error while parsing JSON web token ${token}: " + e.message)
+                        log.error("No such method error while parsing JSON web token ${token}: " + e.message, e)
+                        return false
+                    }
+                    catch (RuntimeException e) {
+                        println("Fatal runtime error while parsing JSON web token ${token}: " + e.message)
+                        log.error("Fatal runtime error while parsing JSON web token ${token}: " + e.message, e)
+                        //throw new Exception("Error parsing JSON web token: " + e.message)
+                        //response.status = 401
+                        //render ("You are not authorized to access annotations without a valid token.  Could not parse token " + token + " due to error: " + e.message + ".")
+                        return false
                     }
                 }
-
-
+                return true
             }
             after = { Map model ->
 

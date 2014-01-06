@@ -94,21 +94,38 @@ environments {
 
 log4j = {
 
-    error  'org.codehaus.groovy.grails.web.servlet',  		// controllers
-           'org.codehaus.groovy.grails.web.pages', 			// GSP
-           'org.codehaus.groovy.grails.web.sitemesh', 		// layouts
-           'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
-           'org.codehaus.groovy.grails.web.mapping', 		// URL mapping
-           'org.codehaus.groovy.grails.commons', 			// core / classloading
-           'org.codehaus.groovy.grails.plugins', 			// plugins
-           'org.codehaus.groovy.grails.orm.hibernate', 		// hibernate integration
-           'org.springframework',
-           'org.hibernate',
-           'net.sf.ehcache.hibernate'
-		   
-     info  'grails.app', 									// Necessary for Bootstrap logging
-		   'org.springframework.security'
-		  
+    error  'org.codehaus.groovy.grails.web.servlet',        // controllers
+            'org.codehaus.groovy.grails.web.pages',          // GSP
+            'org.codehaus.groovy.grails.web.sitemesh',       // layouts
+            'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
+            'org.codehaus.groovy.grails.web.mapping',        // URL mapping
+            'org.codehaus.groovy.grails.commons',            // core / classloading
+            'org.codehaus.groovy.grails.plugins',            // plugins
+            'org.codehaus.groovy.grails.orm.hibernate',      // hibernate integration
+            'org.springframework',
+            'org.hibernate',
+            'net.sf.ehcache.hibernate'
+
+    info    'grails.app',
+            'grails.app.jobs',
+            'org.liquibase',
+            'org.springframework.security',
+            'org.codehaus.groovy.grails.rest',
+            'grails.plugin.databasemigration',
+            'grails.plugins.httplogger',
+            'org.springframework',
+            'org.hibernate',
+            'com.mchange',
+            'grails.app.controller',
+            'grails.app.bootstrap',
+            'grails.app.service',
+            'grails.app.task',
+            'grails.plugin.springcache',
+            'grails.plugin.springsecurity',
+            'BootStrap',
+            'liquibase'
+
+
 	/*
 	 debug 'org.codehaus.groovy.grails.plugins.springsecurity',
 		   'grails.plugins.springsecurity',
@@ -116,9 +133,24 @@ log4j = {
     */
 }
 
+// Tomcat deploy properties
+tomcat.deploy.username="tomcat"
+tomcat.deploy.password="brux6spa"
+tomcat.deploy.url="http://162.242.217.241:8080/manager/text"
+
+
+
+// -------------------------------------------------------------------------------------------------------------------------------------------
+// database-migration
+
+grails.plugin.databasemigration.updateOnStart = true
+grails.plugin.databasemigration.updateOnStartFileNames = ["changelog.groovy"]
+
+
+// -------------------------------------------------------------------------------------------------------------------------------------------
 // Spring Security Configuration
 // The following have to be defined in the Config.groovy of the main application in order for Spring Security to work properly
-// -------------------------------------------------------------------------------------------------------------------------------------------
+
 grails.plugin.springsecurity.userLookup.userDomainClassName 			= 'org.mindinformatics.ann.framework.module.security.users.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName 			= 'org.mindinformatics.ann.framework.module.security.users.UserRole'
 grails.plugin.springsecurity.authority.className 						= 'org.mindinformatics.ann.framework.module.security.users.Role'
@@ -146,14 +178,30 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 
 // origin, authorization, accept, content-type, x-requested-with
 // cors.expose.headers = 'X-app-header1,X-app-header2'
+cors.enabled = true
 cors.headers = [
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': 'content-length, content-type, x-annotator-auth-token, x-requested-with, x-csrftoken'
 ]
 cors.expose.headers = 'x-annotator-auth-token'
+cors.url.pattern = '/annotator/*'
 
 // -------------------------------------------------------------------------------------------------------------------------------------------
 // httplogger:1.1
+
+//should you wish to disable it temporarily or based on environment
+grails.plugins.httplogger.enabled = true
+
+//list of headers to log by the default HttpLogger implementation
+grails.plugins.httplogger.headers = 'cookie, host, connection, accept, accept-language, accept-encoding, origin, x-annotator-auth-token, user-agent, content-type, referer, x-requested-with, x-crsftoken, content-type, content-length'
+
+// - lists of Ant-style patterns to be included/excluded by the default RequestMatcher implementation
+//   (AntPatternRequestMatcher)
+// - includes take precedence over excludes
+// - if none of them are given - all requests are logged
+grails.plugins.httplogger.includeUrls = ['/annotator/**']
+//grails.plugins.httplogger.excludeUrls = ['/css/**', '/**/*.js']
+
 //grails.plugin.httplogger.enabled = true
 //environments {
 //    test {

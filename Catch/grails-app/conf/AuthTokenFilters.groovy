@@ -48,16 +48,19 @@ class AuthTokenFilters {
                         //throw new Exception("Error parsing JSON web token: " + e.message)
                         //response.status = 401
                         //render ("You are not authorized to access annotations without a valid token.  Could not parse token " + token + " due to error: " + e.message + ".")
+                        response.status = 401
                         return false
                     }
                     catch (NoSuchMethodError e) {
                         println("No such method error while parsing JSON web token ${token}: " + e.message)
                         log.error("No such method error while parsing JSON web token ${token}: " + e.message, e)
+                        response.status = 401
                         return false
                     }
                     catch (RuntimeException e) {
                         println("Fatal runtime error while parsing JSON web token ${token}: " + e.message)
                         log.error("Fatal runtime error while parsing JSON web token ${token}: " + e.message, e)
+                        response.status = 401
                         //throw new Exception("Error parsing JSON web token: " + e.message)
                         //response.status = 401
                         //render ("You are not authorized to access annotations without a valid token.  Could not parse token " + token + " due to error: " + e.message + ".")

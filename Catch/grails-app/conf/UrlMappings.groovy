@@ -9,6 +9,10 @@ class UrlMappings {
 			}
 		}
 
+        "/api/$action/$id?"{
+            controller = 'annotator'
+        }
+
 		"/login/auth" {
 			controller = 'openId'
 			action = 'auth'

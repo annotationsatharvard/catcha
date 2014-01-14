@@ -14,6 +14,7 @@ environments {
             url = "jdbc:mysql://localhost:3306/catch?useUnicode=yes&characterEncoding=UTF-8&autoReconnect=true"
             username = "catch"
             password = "catch"
+            /*
             properties {
                 maxActive = 50
                 maxIdle = 25
@@ -27,7 +28,7 @@ environments {
                 validationQuery = "select now()"
                 minEvictableIdleTimeMillis = 1000 * 60 * 5
                 timeBetweenEvictionRunsMillis = 1000 * 60 * 5
-            }
+            }*/
 
 
 //            dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
@@ -54,6 +55,7 @@ environments {
             url = "jdbc:mysql://localhost:3306/catch?useUnicode=yes&characterEncoding=UTF-8&autoReconnect=true"
             username = "catch"
             password = "catch"
+            /*
             properties {
                 maxActive = 50
                 maxIdle = 25
@@ -68,6 +70,7 @@ environments {
                 minEvictableIdleTimeMillis = 1000 * 60 * 5
                 timeBetweenEvictionRunsMillis = 1000 * 60 * 5
             }
+            */
         }
     }
 }

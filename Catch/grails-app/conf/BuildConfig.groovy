@@ -83,5 +83,6 @@ grails.project.dependency.resolution = {
 		compile ":spring-security-openid:2.0-RC2"
         compile ":build-test-data:2.0.8"
         compile ":joda-time:1.4"
+        compile ":jdbc-pool:7.0.47"
     }
 }

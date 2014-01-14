@@ -102,13 +102,13 @@ log4j = {
             'org.codehaus.groovy.grails.commons',            // core / classloading
             'org.codehaus.groovy.grails.plugins',            // plugins
             'org.codehaus.groovy.grails.orm.hibernate',      // hibernate integration
-            'org.springframework',
-            'org.hibernate',
             'net.sf.ehcache.hibernate'
 
     info    'grails.app',
             'grails.app.jobs',
             'org.liquibase',
+            'org.hibernate',
+            'org.springframework',
             'org.springframework.security',
             'org.codehaus.groovy.grails.rest',
             'grails.plugin.databasemigration',
@@ -125,11 +125,13 @@ log4j = {
             'BootStrap',
             'liquibase'
 
+    debug   'org.apache.tomcat.jdbc.pool',
+            'org.apache.commons.dbcp'
 
-	/*
-	 debug 'org.codehaus.groovy.grails.plugins.springsecurity',
-		   'grails.plugins.springsecurity',
-		   'org.springframework.security'
+    /*
+     debug 'org.codehaus.groovy.grails.plugins.springsecurity',
+           'grails.plugins.springsecurity',
+           'org.springframework.security'
     */
 }
 

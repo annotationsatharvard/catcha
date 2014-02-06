@@ -173,7 +173,8 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/administrator/**'		: ['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_USER'],
     '/annotation/**'		: ['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_USER'],
 	'/dashboard/**'			: ['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_USER'],
-    '/dbconsole/**'			: ['permitAll']
+    '/dbconsole/**'			: ['permitAll'],
+    '/tag/**'		        : ['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_USER']
 ]
 // -------------------------------------------------------------------------------------------------------------------------------------------
 // cors:1.1.0

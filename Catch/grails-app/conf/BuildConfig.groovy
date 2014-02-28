@@ -17,7 +17,7 @@ grails.project.dependency.resolution = {
         // excludes 'ehcache'
         excludes 'commons-codec'
     }
-    log "error" // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
+    log "warn" // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
     checksums true // Whether to verify checksums on resolve
 
     repositories {
@@ -36,6 +36,7 @@ grails.project.dependency.resolution = {
         //mavenRepo "http://repository.jboss.com/maven2/"
 		mavenRepo "http://repo.aduna-software.org/maven2/releases/"
 		mavenRepo "https://repository.jboss.org/nexus/content/repositories/thirdparty-releases"
+        mavenRepo 'http://repo.spring.io/milestone'
     }
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.

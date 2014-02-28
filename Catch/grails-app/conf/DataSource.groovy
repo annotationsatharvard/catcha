@@ -37,12 +37,21 @@ environments {
     }
     test {
         dataSource {
+            /*
             pooled = true
             driverClassName = "org.h2.Driver"
             username = "sa"
             password = ""
             dbCreate = "update"
             url = "jdbc:h2:mem:testDb;MVCC=TRUE"
+            */
+            pooled = true
+            //dbCreate = "create-drop"
+            driverClassName = "com.mysql.jdbc.Driver"
+            dialect = org.hibernate.dialect.MySQL5InnoDBDialect
+            url = "jdbc:mysql://localhost:3306/catch?useUnicode=yes&characterEncoding=UTF-8&autoReconnect=true"
+            username = "catch"
+            password = "catch"
 
         }
     }

@@ -135,13 +135,6 @@ log4j = {
     */
 }
 
-// Tomcat deploy properties
-tomcat.deploy.username="tomcat"
-tomcat.deploy.password="brux6spa"
-tomcat.deploy.url="http://162.242.217.241:8080/manager/text"
-
-
-
 // -------------------------------------------------------------------------------------------------------------------------------------------
 // database-migration
 

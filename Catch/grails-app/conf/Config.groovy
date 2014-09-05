@@ -1,3 +1,4 @@
+import grails.util.GrailsUtil
 import grails.util.Metadata;
 
 // Necessary for Grails 2.0 as the variable ${appName} is not available 
@@ -9,6 +10,10 @@ def appName = Metadata.current.getApplicationName();
 
 // See: http://stackoverflow.com/questions/3807267/grails-external-configuration-grails-config-locations-absolute-path-file
 grails.config.locations = ["classpath:${appName}-config.properties", "file:./${appName}-config.properties"]
+
+log.info "Using configuration locations ${grails.config.locations}"
+
+
 
 grails.project.groupId = appName // change this to alter the default package name and Maven publishing destination
 grails.mime.file.extensions = true // enables the parsing of file extensions from URLs into the request format

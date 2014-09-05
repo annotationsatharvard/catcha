@@ -42,7 +42,7 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
 		//provided 'mysql:mysql-connector-java:5.1.13'
 		//runtime 'mysql:mysql-connector-java:5.1.13'
-        runtime 'mysql:mysql-connector-java:5.1.16' 
+        runtime 'mysql:mysql-connector-java:5.1.32'
 		
 		compile "org.apache.marmotta:sesame-tools-rio-jsonld:3.0.0-incubating"
 		compile "org.semweb4j:rdf2go.impl.sesame:4.8.2"
@@ -80,10 +80,15 @@ grails.project.dependency.resolution = {
         //compile ":joda-time:1.4"
         //compile "org.grails.plugins:spring-security-facebook:0.11"
 
+        //compile ":functional-test:1.2.7"
 		compile ':spring-security-core:2.0-RC2'
 		compile ":spring-security-openid:2.0-RC2"
         compile ":build-test-data:2.0.8"
         compile ":joda-time:1.4"
         compile ":jdbc-pool:7.0.47"
+
+        compile (":functional-test:1.2.7") {
+            excludes "commons-codec"
+        }
     }
 }

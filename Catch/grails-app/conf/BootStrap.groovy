@@ -53,6 +53,8 @@ class BootStrap {
         */
 
 
+        println "Using configuration locations: " + grailsApplication.config.grails.config.locations
+
 
 		String password = springSecurityService.encodePassword('password')
 		

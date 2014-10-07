@@ -28,24 +28,26 @@ grails.project.dependency.resolution = {
         mavenCentral()
 
         // uncomment these to enable remote dependency resolution from public Maven repositories
-        //mavenCentral()
-        //mavenLocal()
         //mavenRepo "http://snapshots.repository.codehaus.org"
         //mavenRepo "http://repository.codehaus.org"
         //mavenRepo "http://download.java.net/maven/2/"
         //mavenRepo "http://repository.jboss.com/maven2/"
-        mavenRepo "http://semweb4j.org/repo/"
-        mavenRepo "http://repo.aduna-software.org/maven2/releases/"
-		mavenRepo "https://repository.jboss.org/nexus/content/repositories/thirdparty-releases"
         mavenRepo 'http://repo.spring.io/milestone'
+        mavenRepo "http://mavenrepo.fzi.de/semweb4j.org/repo/"
+        mavenRepo "https://repository.jboss.org/nexus/content/repositories/thirdparty-releases"
+        //mavenRepo "http://repo.aduna-software.org/maven2/releases/"
+
     }
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
         runtime 'mysql:mysql-connector-java:5.1.32'
-		
+
+        compile "org.semweb4j:rdf2go.api:4.8.3"
+        compile ("org.semweb4j:rdf2go.impl.sesame:4.8.3") {
+            //excludes "sesame-runtime-osgi"
+        }
+
 		compile "org.apache.marmotta:sesame-tools-rio-jsonld:3.0.0-incubating"
-		//compile "org.semweb4j:rdf2go.impl.sesame:4.8.2"
-        //compile "org.semweb4j:rdf2go.api:4.8.2"
 
 		compile ("org.apache.jena:jena-core:2.11.0") {
 			excludes 'slf4j-api', 'xercesImpl'
@@ -53,8 +55,8 @@ grails.project.dependency.resolution = {
 		compile ("org.apache.jena:jena-arq:2.9.3")
 
         // Commented this out because this dependency should be brought in with the compile scope above.
+        //runtime "org.semweb4j:rdf2go.api:4.8.2"
 		//runtime "org.semweb4j:rdf2go.impl.sesame:4.8.2"
-		//runtime "org.semweb4j:rdf2go.api:4.8.2"
 
         //runtime "org.semweb4j:rdf2go.impl.base:4.6.2"
 		//compile "org.openrdf:openrdf-sesame-onejar-osgi:2.1.2"

@@ -21,7 +21,7 @@ grails.project.dependency.resolution = {
     checksums true // Whether to verify checksums on resolve
 
     repositories {
-        inherits true // Whether to inherit repository definitions from plugins
+        inherits false // Whether to inherit repository definitions from plugins
         grailsPlugins()
         grailsHome()
         grailsCentral()
@@ -34,20 +34,19 @@ grails.project.dependency.resolution = {
         //mavenRepo "http://repository.codehaus.org"
         //mavenRepo "http://download.java.net/maven/2/"
         //mavenRepo "http://repository.jboss.com/maven2/"
-		mavenRepo "http://repo.aduna-software.org/maven2/releases/"
+        mavenRepo "http://semweb4j.org/repo/"
+        mavenRepo "http://repo.aduna-software.org/maven2/releases/"
 		mavenRepo "https://repository.jboss.org/nexus/content/repositories/thirdparty-releases"
         mavenRepo 'http://repo.spring.io/milestone'
     }
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
-		//provided 'mysql:mysql-connector-java:5.1.13'
-		//runtime 'mysql:mysql-connector-java:5.1.13'
         runtime 'mysql:mysql-connector-java:5.1.32'
 		
 		compile "org.apache.marmotta:sesame-tools-rio-jsonld:3.0.0-incubating"
-		compile "org.semweb4j:rdf2go.impl.sesame:4.8.2"
-		compile "org.semweb4j:rdf2go.api:4.8.2"
-		
+		//compile "org.semweb4j:rdf2go.impl.sesame:4.8.2"
+        //compile "org.semweb4j:rdf2go.api:4.8.2"
+
 		compile ("org.apache.jena:jena-core:2.11.0") {
 			excludes 'slf4j-api', 'xercesImpl'
 		}
@@ -87,8 +86,14 @@ grails.project.dependency.resolution = {
         compile ":joda-time:1.4"
         compile ":jdbc-pool:7.0.47"
 
-        compile (":functional-test:1.2.7") {
+//        compile (":functional-test:1.2.7") {
+//            excludes "commons-codec"
+//        }
+
+        // #21 Keep this here so commons-codec:1.3 does not get included
+        compile (":functional-test:2.0.RC1") {
             excludes "commons-codec"
         }
+
     }
 }

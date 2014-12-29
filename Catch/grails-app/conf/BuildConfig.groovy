@@ -42,8 +42,11 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
         runtime 'mysql:mysql-connector-java:5.1.32'
 
-        compile "org.semweb4j:rdf2go.api:4.8.3"
+        compile ("org.semweb4j:rdf2go.api:4.8.3") {
+            excludes 'slf4j-api'
+        }
         compile ("org.semweb4j:rdf2go.impl.sesame:4.8.3") {
+            excludes 'slf4j-api'
             //excludes "sesame-runtime-osgi"
         }
 

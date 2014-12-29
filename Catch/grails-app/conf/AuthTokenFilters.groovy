@@ -6,8 +6,16 @@ import java.text.ParseException
 class AuthTokenFilters {
 
     def filters = {
-        all(controller: 'annotator', action: '*') {
+
+        annotator(controller: 'annotator', action: '*') {
             before = {
+
+                // Always allow requests for token to pass through since the alternative
+                // means that you would need to have a token to generate a token
+                if (actionName == "token") {
+                    return true
+                }
+
                 def token = request.getHeader("x-annotator-auth-token")
                 if (!token) {
                     response.status = 401

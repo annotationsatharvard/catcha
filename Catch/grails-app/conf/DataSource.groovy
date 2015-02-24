@@ -14,7 +14,7 @@ environments {
             url = "jdbc:mysql://localhost:3306/catch?useUnicode=yes&characterEncoding=UTF-8&autoReconnect=true"
             username = "catch"
             password = "catch"
-
+            loggingSql = true
         }
     }
     test {
@@ -37,6 +37,16 @@ environments {
             url = "jdbc:mysql://localhost:3306/catch?useUnicode=yes&characterEncoding=UTF-8&autoReconnect=true"
             username = "catch"
             password = "catch"
+            properties {
+                   maxActive = -1
+                   minEvictableIdleTimeMillis=1800000
+                   timeBetweenEvictionRunsMillis=1800000
+                   numTestsPerEvictionRun=3
+                   testOnBorrow=true
+                   testWhileIdle=true
+                   testOnReturn=true
+                   validationQuery="SELECT 1"
+            }
         }
     }
 }

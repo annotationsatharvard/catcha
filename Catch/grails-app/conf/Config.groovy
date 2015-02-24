@@ -3,10 +3,11 @@ import grails.util.Metadata;
 
 // Necessary for Grails 2.0 as the variable ${appName} is not available 
 // anymore in the log4j closure. It needs the import above.
-def appName = Metadata.current.getApplicationName();
+//def appName = Metadata.current.getApplicationName();
 
-// locations to search for config files that get merged into the main config
-// config files can either be Java properties files or ConfigSlurper scripts
+// locations to search for config files that get merged into the main config;
+// config files can be ConfigSlurper scripts, Java properties files, or classes
+// in the classpath in ConfigSlurper format
 
 // See: http://stackoverflow.com/questions/3807267/grails-external-configuration-grails-config-locations-absolute-path-file
 grails.config.locations = [ "file:./${appName}-config.properties",
@@ -24,26 +25,26 @@ log.info "Using configuration locations ${grails.config.locations}"
 grails.project.groupId = appName // change this to alter the default package name and Maven publishing destination
 grails.mime.file.extensions = true // enables the parsing of file extensions from URLs into the request format
 grails.mime.use.accept.header = false
-grails.mime.types = [ html: ['text/html','application/xhtml+xml'],
-                      xml: ['text/xml', 'application/xml'],
-                      text: 'text/plain',
-                      js: 'text/javascript',
-                      rss: 'application/rss+xml',
-                      atom: 'application/atom+xml',
-                      css: 'text/css',
-                      csv: 'text/csv',
-                      all: '*/*',
-                      json: ['application/json','text/json'],
-                      form: 'application/x-www-form-urlencoded',
-                      multipartForm: 'multipart/form-data'
-                    ]
+    grails.mime.types = [
+    all:	'*/*',
+    atom:       'application/atom+xml',
+    css:	'text/css',
+    csv:	'text/csv',
+    form:       'application/x-www-form-urlencoded',
+    html:       ['text/html','application/xhtml+xml'],
+    js:		'text/javascript',
+    json:       ['application/json','text/json'],
+    multipartForm: 'multipart/form-data',
+    rss:	'application/rss+xml',
+    text:       'text/plain',
+    xml:	['text/xml', 'application/xml']
+]
 
 // URL Mapping Cache Max Size, defaults to 5000
 //grails.urlmapping.cache.maxsize = 1000
 
 // What URL patterns should be processed by the resources plugin
 grails.resources.adhoc.patterns = ['/images/*', '/css/*', '/js/*', '/plugins/*']
-
 
 // The default codec used to encode data with ${}
 grails.views.default.codec = "none" // none, html, base64
@@ -66,8 +67,8 @@ grails.web.disable.multipart=false
 // request parameters to mask when logging exceptions
 grails.exceptionresolver.params.exclude = ['password']
 
-// enable query caching by default
-grails.hibernate.cache.queries = true
+// configure auto-caching of queries by default (if false you can cache individual queries with 'cache: true')
+grails.hibernate.cache.queries = false
 
 // set per-environment serverURL stem for creating absolute links
 environments {
@@ -104,6 +105,11 @@ environments {
 }
 
 log4j = {
+    // Example of changing the log pattern for the default console appender:
+    //
+    //appenders {
+    //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
+    //}
 
     error  'org.codehaus.groovy.grails.web.servlet',        // controllers
             'org.codehaus.groovy.grails.web.pages',          // GSP

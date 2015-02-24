@@ -17,6 +17,8 @@ class SecureController {
 			render(view: 'uploadForm')
 			return
 		}
-	
-	f.transferTo(new File('/some/local/dir/myfile.txt')) response.sendError(200, 'Done') }
+		f.transferTo(new File('/some/local/dir/myfile.txt'))
+		response.sendError(200, 'Done')
+	}
+
 }

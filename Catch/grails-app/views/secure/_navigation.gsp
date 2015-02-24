@@ -17,18 +17,20 @@
 	<!-- Begin top navigation menu -->
  <div id="topnav">
       <ul>
-        <li><a class="active" href="index.html">Home</a>
+        <li><a class="active" href="${request.contextPath}">Home</a>
         </li>
-        <li><a href="style-demo.html">Share</a>
+        <li><a href="#">Share</a>
           <ul>
-          	 <li><g:link controller="secure" action="validate">Open Annotation Validator</g:link></li>
+              <%--
+          	 <li><g:link controller="secure" action="validate">Validate annotation</g:link></li>
+          	 --%>
              <li><g:link controller="secure" action="upload">Upload annotation</g:link></li>
           </ul>
         </li>
-        <li><a href="full-width.html">Explore</a>
+        <li><a href="#">Explore</a>
           <ul>
-            <li><a href="#">Search annotation</a></li>
-            <li><a href="#">Browse annotation</a></li>
+            <li><g:link controller="dashboard">Dashboard</g:link></li>
+            <li><g:link controller="annotation">Browse annotation</g:link></li>
           </ul>
         </li>
         <li class="last"><a href="#">About</a>

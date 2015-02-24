@@ -1,3 +1,4 @@
+<!--
 <div class="wrapper col4">
   <div id="footer">
   <div style="padding:15px;">
@@ -31,9 +32,9 @@
       Postcode/Zip<br />
       </address>
       Tel: xxxxx xxxxxxxxxx
-      <!-- -->
     </div>
     <br class="clear" />
   </div>
   </div>
 </div>
+-->

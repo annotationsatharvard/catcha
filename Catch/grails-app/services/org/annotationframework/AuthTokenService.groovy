@@ -24,8 +24,6 @@ class AuthTokenService {
 
     def generateAuthToken(String consumerKey, String userId, Date issuedAt, Integer ttl) {
 
-        SystemApi systemApi = SystemApi.findByApikey(consumerKey)
-
         // Given a user instance
         // Compose the JWT claims set
         JWTClaimsSet jwtClaims = new JWTClaimsSet();
@@ -47,6 +45,8 @@ class AuthTokenService {
 
         // Create JWS object
         JWSObject jwsObject = new JWSObject(header, new Payload(jwtClaims.toJSONObject()));
+
+        SystemApi systemApi = SystemApi.findByApikey(consumerKey)
         if (!systemApi?.secretKey) {
             throw new IllegalArgumentException("System API must have a valid secret key in order to sign token");
         }
@@ -99,7 +99,7 @@ class AuthTokenService {
             throw e;
         }
 
-        // 1. Make sure a system API exists for this consumer key
+        // Make sure a system API exists for this consumer key
         def payload = jwsObject.payload.toJSONObject()
         def consumerKey = payload?.consumerKey?:payload?.d?.consumerKey
 
@@ -107,11 +107,20 @@ class AuthTokenService {
         println "issuedAt: " + payload?.issuedAt
         println "ttl: " + payload?.ttl
 
+        log.info "Checking to see if API key ${consumerKey} exists?"
         SystemApi systemApi = SystemApi.findByApikey(consumerKey)
         if (!systemApi) {
+            log.info("System API key ${consumerKey} does not exist")
             //throw new Exception("There's no consumer registered with consumerKey: " + consumerKey)
             log.error("Unable to find registered system with consumer key " + consumerKey)
-            throw new IllegalArgumentException("Unable to find system with API key " + consumerKey + "." );
+            throw new IllegalArgumentException("Unable to locate a registered consumer with API key '" + consumerKey + "'." );
+        }
+        else {
+            log.info("System API key ${consumerKey} exists")
+        }
+
+        if (!systemApi.enabled) {
+            throw new IllegalArgumentException("System API with key " + consumerKey + " is currently disabled.");
         }
 
         // Make sure the user is valid
@@ -119,6 +128,7 @@ class AuthTokenService {
 
         // Make sure there's an issue time and that the token has not expired
         // Should implement this validation, but it's not really critical at the moment
+        log.info "Validating token ${token}"
         if (verify) {
             try {
                 Date now = new Date();
@@ -144,12 +154,16 @@ class AuthTokenService {
         }
 
         // Verify signature
+        log.info "Verifying token signature"
         try {
+
             JWSVerifier verifier = new MACVerifier(systemApi?.secretKey?.getBytes());
+            log.info ("jwsObject.verify(): " + jwsObject.verify(verifier))
+
             return jwsObject.verify(verifier);
         } catch (JOSEException e) {
             log.error("Unable to verify signature: " + e.getMessage(), e);
-            throw new IllegalArgumentException("Unable to verify signature for API key " + consumerKey);
+            throw new IllegalArgumentException("Unable to verify signature for API key " + consumerKey + ":" + e.message, e);
         }
 
         return false;

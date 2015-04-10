@@ -24,7 +24,7 @@ log.info "Using configuration locations ${grails.config.locations}"
 
 grails.project.groupId = appName // change this to alter the default package name and Maven publishing destination
 grails.mime.file.extensions = true // enables the parsing of file extensions from URLs into the request format
-grails.mime.use.accept.header = false
+grails.mime.use.accept.header = true
     grails.mime.types = [
     all:	'*/*',
     atom:       'application/atom+xml',
@@ -176,6 +176,7 @@ grails.plugin.springsecurity.openid.domainClass 						= 'org.mindinformatics.ann
 
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/info'					: ['permitAll'],
+    '/annotator/**'			: ['permitAll'],
 	'/main/**'				: ['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_USER'],
 	'/secure/**'			: ['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_USER'],
 	'/upload/**'			: ['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_USER'],

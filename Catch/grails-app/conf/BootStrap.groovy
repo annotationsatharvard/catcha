@@ -137,18 +137,18 @@ class BootStrap {
 
 
 
-        def firstApp =
-            new SystemApi(name: "My First App", shortName: "myfirstapp", description: "My First Application",
-                    apikey: "0cbfa370-b73c-4e3a-ae46-582df284b7c3", enabled: true, accessToPublicData: true, createdBy: admin).save(flush: true)
-
-
-        def secondApp =
-            new SystemApi(name: "My Second App", shortName: "mysecondapp", description: "My Second Application",
-                    apikey: "80404495-7196-4879-8719-54c21f44a31a", enabled: true, accessToPublicData: true, createdBy: admin).save(flush: true)
-
-        def thirdApp =
-            new SystemApi(name: "My Third App", shortName: "mythirddapp", description: "My Third Application",
-                    apikey: "4c7f4d1c-8ac4-4e9f-84c8-b271c57fcac4", enabled: true, accessToPublicData: true, createdBy: admin).save(flush: true)
+//        def firstApp =
+//            new SystemApi(name: "My First App", shortName: "myfirstapp", description: "My First Application",
+//                    apikey: "0cbfa370-b73c-4e3a-ae46-582df284b7c3", enabled: true, accessToPublicData: true, createdBy: admin).save(flush: true)
+//
+//
+//        def secondApp =
+//            new SystemApi(name: "My Second App", shortName: "mysecondapp", description: "My Second Application",
+//                    apikey: "80404495-7196-4879-8719-54c21f44a31a", enabled: true, accessToPublicData: true, createdBy: admin).save(flush: true)
+//
+//        def thirdApp =
+//            new SystemApi(name: "My Third App", shortName: "mythirddapp", description: "My Third Application",
+//                    apikey: "4c7f4d1c-8ac4-4e9f-84c8-b271c57fcac4", enabled: true, accessToPublicData: true, createdBy: admin).save(flush: true)
 
 		if(grailsApplication.config.af.security.initialize.user=='true') { 
 			def userUsername = 'user'

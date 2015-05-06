@@ -48,12 +48,13 @@ class AuthTokenService {
 
         SystemApi systemApi = SystemApi.findByApikey(consumerKey)
         if (!systemApi?.secretKey) {
-            throw new IllegalArgumentException("System API must have a valid secret key in order to sign token");
+            throw new IllegalArgumentException("System API must have a valid secret key in order to sign token. Please email your system admistrator to retrieve your secret key.");
         }
 
         try {
             // Create HMAC signer
-            JWSSigner signer = new MACSigner(systemApi?.secretKey?.getBytes());
+            String secretKey = systemApi?.secretKey?:systemApi?.apikey
+            JWSSigner signer = new MACSigner(secretKey?.getBytes());
             jwsObject.sign(signer);
         } catch (JOSEException e) {
             println("Error signing JWT: " + e.getMessage());

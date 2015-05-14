@@ -6,34 +6,33 @@ These instructions assume that:
 
 # Dependencies
 
-##  Install Java 7+
+Install Java 7+
 ```
 $ sudo apt-get install openjdk-7-jre
 ```
-## Install Tomcat 7+
+Install Tomcat 7+
 ```
 $ sudo apt-get install tomcat7
 $ sudo apt-get install tomcat7-admin
 ```
-## Install MySQL 5.5+
+Install MySQL 5.5+
 ```
 $ sudo apt-get install mysql-server
 ```
 # Database 
 
-## Create database 
+Create the database 
 ```
 $ mysql -u root -p -e 'create database catch default charset utf8;'
 ```
 
-## Grant permissions to database user
+Grant permissions to database user
 ```
 mysql -u root -p -e 'grant all on catch.* to 'catch'@'localhost' identified by "password";'
 ```
 NOTE: For security reasons, you should probably consider using a different password.  The username and password properties should be configured using the `dataSource.username` and `dataSource.password` configuration properties in `catch-config.properties`.
 
-
-## Configure application 
+# Configuration
 Create a config file (catch-config.properties) to store runtime configuration properties.
 ``` 
 $ mkdir /usr/share/tomcat7/.grails
@@ -65,12 +64,12 @@ NOTE: Documentation for each available configuration will be provided soon.
 
 # Deployment
 
-## Stop tomcat7 server
+Stop tomcat7 server
 ```
 $ sudo service tomcat7 stop
 ```
-## Configure Tomcat
-You will likely encounter OutOfMemoryErrors with Tomcat's default memory settings.  Therefore, we usually add a file (`/usr/share/tomcat7/bin/setenv.sh`) that is invoked by the Tomcat startup script and is used to control the amount of memory allocated to your instance of Tomcat. A very basic `setenv.sh` will look like this:  
+
+NOTE: You will likely encounter OutOfMemoryErrors with Tomcat's default memory settings.  Therefore, we usually add a file (`/usr/share/tomcat7/bin/setenv.sh`) that is invoked by the Tomcat startup script and is used to control the amount of memory allocated to your instance of Tomcat. A very basic `setenv.sh` will look like this:  
 ```
 export CATALINA_OPTS="-Xms512m -Xmx512m -XX:MaxPermSize=256m"
 ```
@@ -80,27 +79,25 @@ Once you've edited the file, make sure to change mod properties to allow executi
 ```
 $ chmod +x /usr/share/tomcat7/bin/setenv.sh
 ```
+Download latest release by navigating to the the "latest" release page on GitHub and download the WAR file associated with the latest release. At the time this documentation was written, the latest release was v0.5.4
+https://github.com/annotationsatharvard/catcha/releases/latest
 
-## Download latest release
-Go to the the "latest" release page (https://github.com/annotationsatharvard/catcha/releases/latest) and download the WAR file associated with the latest release. At the time this documentation was written, the latest release was v0.5.4
-
-If you wanted to do this from a shell on the server you're installing, use wget with the following URL to get the latest WAR file.
+If you wanted to do this from a shell on the server where you're installing the CATCH API, use wget with the following URL to get the latest WAR file.
 ```
 $ wget https://github.com/annotationsatharvard/catcha/releases/download/v0.5.4/catch-0.5.4.war
 ```
 
-## Deploy WAR to Tomcat
+Deploy WAR to Tomcat
 ```
 $ cp catch-0.5.4.war /var/lib/tomcat7/webapps/catch.war
 ```
 
-## Start Tomcat
+Start Tomcat
 ```
 $ sudo service tomcat7 start
 ```
 
-## Tail the Tomcat catalina.out log (optional)
-This step is optional 
+[optional] Lastly, tail the Tomcat catalina.out log to make sure that there are no errors.
 ```
 $ tail -f /var/log/tomcat7/catalina.out
 ```

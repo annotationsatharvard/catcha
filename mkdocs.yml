@@ -10,20 +10,16 @@ copyright: Copyright &copy; 2015, <a href="https://twitter.com/justinmiranda">CA
 google_analytics: ['UA-61763038-2', 'CATCH-A']
 
 pages:
-- ['index.md', 'Home']
-#- ['user-guide/writing-your-docs.md', 'User Guide', 'Writing your docs']
-#- ['user-guide/styling-your-docs.md', 'User Guide', 'Styling your docs']
-#- ['user-guide/configuration.md', 'User Guide', 'Configuration']
+- ['index.md', 'Introduction']
+
+# About
 #- ['about/license.md', 'About', 'License']
 #- ['about/release-notes.md', 'About', 'Release Notes']
 #- ['about/contributing.md', 'About', 'Contributing']
 
 
-# About
-#- ['index.md', 'About', '']
-
-# Installation
-#- ['installation/index.md', 'Installation',  'Overview']
+# Installation Guide
+- ['installation/index.md', 'Installation',  'Overview']
 #- ['installation/ubuntu.md', 'Installation', 'Ubuntu']
 #- ['installation/mac.md', 'Installation', 'Mac OS X']
 #- ['installation/windows.md', 'Installation', 'Windows']
@@ -33,9 +29,14 @@ pages:
 
 # Developer Guide
 # Continuous Integration
+
 # User Guide
+#- ['user-guide/writing-your-docs.md', 'User Guide', 'Writing your docs']
+#- ['user-guide/styling-your-docs.md', 'User Guide', 'Styling your docs']
+#- ['user-guide/configuration.md', 'User Guide', 'Configuration']
+
 # HowTo
-# Cloud
+# Deployment Guide
 
 # Releases:
 #- ['release-notes.md', 'Releases', 'Release Notes']

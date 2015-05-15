@@ -17,20 +17,21 @@ pages:
 #- ['about/release-notes.md', 'About', 'Release Notes']
 #- ['about/contributing.md', 'About', 'Contributing']
 
-
+# Admin Guide
+- ['admin-guide/index.md', 'Admin Guide',  'Overview']
+- ['admin-guide/installation.md', 'Admin Guide',  'Installation']
+- ['admin-guide/getting-started.md', 'Admin Guide', 'Getting Started']
+- ['admin-guide/configuration.md', 'Admin Guide', 'Configuration']
 
 # User Guide
-- ['user-guide/index.md', 'User Guide',  'Overview']
-- ['user-guide/installation.md', 'User Guide',  'Installation']
+- ['user-guide/index.md', 'User Guide', 'Overview']
 - ['user-guide/getting-started.md', 'User Guide', 'Getting Started']
 - ['user-guide/api.md', 'User Guide', 'API Docs']
 - ['user-guide/authentication.md', 'User Guide', 'Authentication']
-- ['user-guide/configuration.md', 'User Guide', 'Configuration']
 
 # Developer Guide
 - ['developer-guide/index.md', 'Developer Guide',  'Overview']
-#- ['developer-guide/getting-started.md', 'Developer Guide', 'Getting Started']
-#- ['developer-guide/installation.md', 'Developer Guide',  'Building the code']
+- ['developer-guide/getting-started.md', 'Developer Guide', 'Getting Started']
 
 # Deployment Guide
 

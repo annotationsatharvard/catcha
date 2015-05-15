@@ -1,8 +1,10 @@
+# Assumptions
 These instructions assume that:
 
+* You are either a developer or sysadmin.
+* You are familiar with Ubuntu, Java, MySQL, and Tomcat.
 * You are installing the CATCH API on a version of Debian Linux (like Ubuntu 14.04).
 * You have SSH'd onto the server to which you intend to deploy CATCH API.
-* You are familiar with Ubuntu, Java, MySQL, and Tomcat.
 
 # Dependencies
 

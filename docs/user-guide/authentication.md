@@ -1,4 +1,4 @@
-# Authentication
+# Overview
 The current version of the CATCH API (v0.5.4) adopts the JSON Web Token (JWT) standard.
 
 ## Json Web Token 

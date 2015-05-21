@@ -1,9 +1,22 @@
 ## Overview 
 
-This software was created for the [Harvard Library Labs CATCH project](https://osc.hul.harvard.edu/liblab/proj/catch) awarded to Phil Desenne, Martin Schreiner and Paolo Ciccarese.
+CATCH-A is a cloud-based working prototype of the backend Annotation Hub (AH) database and
+Application Programing Interface (API) for the Common Annotation, Tagging, and Citation at
+Harvard (CATCH) project [https://github.com/annotationsatharvard/catcha](https://github.com/annotationsatharvard/catcha). 
+The AH enables storing, searching, sharing and analyzing scholarly annotations, tags, including semantic tagging,
+produced on four digital media types: text, image, audio and video. The AH is designed to
+interoperate with third-party annotation multi-media tools to aggregate and associate contextualized
+annotation metadata with reference to persistent digital media in repositories, such as the Harvard
+Library DRS (see Figure 1).
+
+<!--
+All annotation data stored inside the AH is normalized (translated) into the 
+[Open Annotation data model W3C standards](http://www.openannotation.org/spec/core/). The aggregated annotation
+metadata can then be queried and analyzed through the exposed API (see [Details](#details) section).
+-->
 
 ![Screenshot](/img/hub-architecture.png)
-<p style="text-align:center">Annotation Hub</p>
+<p style="text-align:center">Figure 1. Annotation Hub</p>
 
 
 ## Details
@@ -50,6 +63,14 @@ multiple tool-independent annotation scenarios.
 Furthermore, we will continue testing the implementations of the AH and Annotation Grid Display
 inside the edX platform and define APIs to connect the Library resources from the DRS inside the
 edX annotation modules. 
+
+## Attribution
+This software was created for the [Harvard Library Labs CATCH project](https://osc.hul.harvard.edu/liblab/proj/catch) awarded to Phil Desenne, Martin Schreiner and Paolo Ciccarese.
+
+The software was originally written by:
+
+* Dr. Paolo Ciccarese http://paolociccarese.info
+* Justin Miranda http://twitter.com/justinmiranda
 
 ## Project Team
 

@@ -1,74 +1,73 @@
+# 0. Check Yourself
 These instructions assume that:
 
 * You are either a developer or sysadmin.
 * You are familiar with Ubuntu, Java, MySQL, and Tomcat.
 * You are installing the CATCH API on a version of Debian Linux (like Ubuntu 14.04).
-* You have SSH'd onto the server to which you intend to deploy CATCH API.
+* You have SSH'd onto the server to which you intend to deploy the CATCH API.
 
-# Dependencies
+# 1. Check Dependencies
 
-### Install Java 7+
+### 1.1 Install Java 7+
 ```
 $ sudo apt-get install openjdk-7-jre
 ```
-### Install Tomcat 7+
+### 1.2 Install Tomcat 7+
 ```
 $ sudo apt-get install tomcat7
 $ sudo apt-get install tomcat7-admin
 ```
-### Install MySQL 5.5+
+### 1.3 Install MySQL 5.5+
 ```
 $ sudo apt-get install mysql-server
 ```
-# Database 
+# 2. Setup Database 
 
-### Create the database 
+### 2.1 Create the database 
 ```
 $ mysql -u root -p -e 'create database catch default charset utf8;'
 ```
 
-### Grant permissions to database user
+### 2.2 Grant permissions to database user
 ```
-mysql -u root -p -e 'grant all on catch.* to 'catch'@'localhost' identified by "password";'
+mysql -u root -p -e 'grant all on catch.* to 'catch'@'localhost' identified by "<password>";'
 ```
 NOTE: For security reasons, you should probably consider using a different password.  The username and password properties should be configured using the `dataSource.username` and `dataSource.password` configuration properties in `catch-config.properties`.
 
-# Configuration
+# 3. Configure Application
 Create a config file (catch-config.properties) to store runtime configuration properties.
 ``` 
 $ mkdir /usr/share/tomcat7/.grails
 $ vi /usr/share/tomcat7/.grails/catch-config.properties
 ```
 **catch-config.properties**
-```
-# Database Configuration
-dataSource.url=jdbc:mysql://localhost:3306/catch?useUnicode=yes&characterEncoding=UTF-8&autoReconnect=true
-dataSource.username=catch
-dataSource.password=password
-# CATCH Configuration
-af.shared.name=CATCH-A
-af.shared.title=CATCH-A, Annotations at Harvard
-af.shared.logo.title=CATCH
-af.shared.logo.subtitle=Annotation Hub
-af.shared.copyright.label=Annotations @ Harvard 
-af.shared.copyright.link=http://www.annotations.harvard.edu/
-af.security.initialize.user=true
-af.security.moderation.user.request=true
-af.node.organization=Massachusetts General Hospital
-af.node.administrator.name=Dr. Paolo Ciccarese
-af.node.administrator.email.to=paolo.ciccarese@gmail.com
-af.node.administrator.email.display=paolo dot ciccarese at gmail.com
-af.node.base.url=http://localhost:8080/catch/
-```
+
+
+    # Database Configuration
+    dataSource.url=jdbc:mysql://localhost:3306/catch?useUnicode=yes&characterEncoding=UTF-8&autoReconnect=true
+    dataSource.username=catch
+    dataSource.password=<password>
+
+    # CATCH Configuration
+    af.shared.name=CATCH-A
+    af.shared.title=CATCH-A, Annotations at Harvard
+    af.shared.logo.title=CATCH
+    af.shared.logo.subtitle=Annotation Hub
+    af.shared.copyright.label=Annotations @ Harvard 
+    af.shared.copyright.link=http://www.annotations.harvard.edu/
+    af.security.initialize.user=true
+    af.security.moderation.user.request=true
+    af.node.organization=Massachusetts General Hospital
+    af.node.administrator.name=Dr. Paolo Ciccarese
+    af.node.administrator.email.to=paolo.ciccarese@gmail.com
+    af.node.administrator.email.display=paolo dot ciccarese at gmail.com
+    af.node.base.url=http://localhost:8080/catch/
+
 NOTE: Documentation for each available configuration will be provided soon.
 
-# Deployment
+# 4. Configure Tomcat
 
-### Stop tomcat7 server
-```
-$ sudo service tomcat7 stop
-```
-### Allocate memory for tomcat7 
+### 4.1 Allocate memory for tomcat7 
 NOTE: You will likely encounter OutOfMemoryErrors with Tomcat's default memory settings.  Therefore, we usually add a file (`/usr/share/tomcat7/bin/setenv.sh`) that is invoked by the Tomcat startup script and is used to control the amount of memory allocated to your instance of Tomcat. A very basic `setenv.sh` will look like this:  
 ```
 export CATALINA_OPTS="-Xms512m -Xmx512m -XX:MaxPermSize=256m"
@@ -80,6 +79,13 @@ Once you've edited the file, make sure to change mod properties to allow executi
 $ chmod +x /usr/share/tomcat7/bin/setenv.sh
 ```
 
+# 5. Deploy Application
+
+### 5.1 Stop tomcat7 server
+```
+$ sudo service tomcat7 stop
+```
+
 ### Download release
 Download latest release by navigating to the the "latest" release page on GitHub and download the WAR file associated with the latest release. At the time this documentation was written, the latest release was v0.5.4
 https://github.com/annotationsatharvard/catcha/releases/latest
@@ -89,17 +95,24 @@ If you wanted to do this from a shell on the server where you're installing the 
 $ wget https://github.com/annotationsatharvard/catcha/releases/download/v0.5.4/catch-0.5.4.war
 ```
 
-### Deploy WAR to Tomcat
+### 5.2 Deploy WAR to Tomcat
 ```
 $ cp catch-0.5.4.war /var/lib/tomcat7/webapps/catch.war
 ```
 
-### Start Tomcat
+NOTE: If you want the API to be deployed as the root context
+```
+$ cp catch-0.5.4.war /var/lib/tomcat7/webapps/ROOT.war
+```
+
+NOTE: You can also deploy the application using the Tomcat Manager app. Please see the [Tomcat](tomcat.md) documentation in the Admin Guide for more details.
+
+### 5.3 Start Tomcat
 ```
 $ sudo service tomcat7 start
 ```
 
-### Tail catalina.out
+### 5.4 Tail catalina.out
 [optional] Lastly, tail the Tomcat catalina.out log to make sure that there are no errors.
 ```
 $ tail -f /var/log/tomcat7/catalina.out

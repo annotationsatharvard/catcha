@@ -15,6 +15,7 @@ pages:
 # About
 #- ['about/license.md', 'About', 'License']
 #- ['about/release-notes.md', 'About', 'Release Notes']
+#- ['about/changelog.md', 'About', 'Change Log']
 #- ['about/contributing.md', 'About', 'Contributing']
 
 # Admin Guide
@@ -22,6 +23,19 @@ pages:
 - ['admin-guide/installation.md', 'Admin Guide',  'Installation']
 - ['admin-guide/getting-started.md', 'Admin Guide', 'Getting Started']
 - ['admin-guide/configuration.md', 'Admin Guide', 'Configuration']
+- ['admin-guide/upgrade.md', 'Admin Guide', 'Upgrading']
+- ['admin-guide/getting-support.md', 'Admin Guide', 'Getting Support']
+
+- ['admin-guide/mysql.md', 'Admin Guide', 'MySQL HOWTO']
+- ['admin-guide/tomcat.md', 'Admin Guide', 'Tomcat HOWTO']
+- ['admin-guide/ubuntu.md', 'Admin Guide', 'Ubuntu HOWTO']
+
+# Deployment Guide
+- ['admin-guide/deployment/aws-ec2.md', 'Deployment Guide', 'AWS Elastic Compute Cloud']
+- ['admin-guide/deployment/aws-ebs.md', 'Deployment Guide', 'AWS Elastic Beanstalk']
+- ['admin-guide/deployment/digital-ocean.md', 'Deployment Guide', 'Digital Ocean']
+- ['admin-guide/deployment/docker.md', 'Deployment Guide', 'Docker']
+
 
 # User Guide
 #- ['user-guide/index.md', 'User Guide', 'Overview']

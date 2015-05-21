@@ -62,14 +62,12 @@ The first format we supposed was the one provided by AnnotatorJS. According to t
 required contents of the token payload are:
 
 #### Custom Claims
-+-------------------+----------------------------------------------------------------------------------+------------------------------------------+
 | name              | description                                                                      | example                                  |
-+-------------------+----------------------------------------------------------------------------------+--------------------------------------------+
+|-------------------|----------------------------------------------------------------------------------|------------------------------------------|
 | ``consumerKey``   | the consumer key issued by the backend store                                     | ``"602368a0e905492fae87697edad14c3a"``   |
 | ``userId``        | the consumer's **unique** identifier for the user to whom the token was issued   | ``"alice"``                              |
 | ``issuedAt``      | the ISO8601 time at which the token was issued                                   | ``"2012-03-23T10:51:18Z"``               |
 | ``ttl``           | the number of seconds after ``issuedAt`` for which the token is valid            | ``86400``                                |
-+-------------------+----------------------------------------------------------------------------------+------------------------------------------+
 
 #### Example Token
 ```
@@ -106,14 +104,12 @@ are the same as those used by the AnnotatorJS token. The only difference is that
 ayer in the payload (see Payload section below).
 
 #### Custom Claims
-+-------------------+----------------------------------------------------------------------------------+------------------------------------------+
 | name              | description                                                                      | example                                  |
-+-------------------+----------------------------------------------------------------------------------+------------------------------------------+
+|-------------------|----------------------------------------------------------------------------------|------------------------------------------|
 | ``consumerKey``   | the consumer key issued by the backend store                                     | ``"602368a0e905492fae87697edad14c3a"``   |
 | ``userId``        | the consumer's **unique** identifier for the user to whom the token was issued   | ``"jmiranda"``                           |
 | ``issuedAt``      | the ISO8601 time at which the token was issued                                   | ``"2012-03-23T10:51:18Z"``               |
 | ``ttl``           | the number of seconds after ``issuedAt`` for which the token is valid            | ``86400``                                |
-+-------------------+----------------------------------------------------------------------------------+------------------------------------------+
 
 #### Token 
 ```
@@ -146,9 +142,8 @@ We are not currently supporting any of the standard format (e.g. custom claims),
 are part of the JWT standard and probably should be used instead of our custom claims.
 
 #### Custom Claims
-+-------------------+----------------------------------------------------------------------------------+--------------------------------------------+
 |  key              | description                                                                      | example                                    |
-+-------------------+----------------------------------------------------------------------------------+--------------------------------------------+
+|-------------------|----------------------------------------------------------------------------------|--------------------------------------------|
 | ``iss``           | The issuer of the token                                                          | ``"602368a0e905492fae87697edad14c3a"``     |
 | ``sub``           | The subject of the token (email, API key)                                        | ``"35624613-718e-4b63-ae99-7be6df9018cf"`` |
 | ``aud``           | The audience of the token                                                        | ``"2012-03-23T10:51:18Z"``                 |
@@ -156,7 +151,6 @@ are part of the JWT standard and probably should be used instead of our custom c
 | ``nbf``           | Defines the time before which the JWT MUST NOT be accepted for processing        | ``86400``                                  |
 | ``iat``           | The time the JWT was issued. Can be used to determine the age of the JWT         | ``1416929061``                             |
 | ``jti``           | Unique identifier for the JWT. Can be used to prevent the JWT from being replayed. This is helpful for a one time use token.  | ``802057ff9b5b4eb7fbb8856b6eb2cc5b``                                |
-+-------------------+----------------------------------------------------------------------------------+--------------------------------------------+
 
 #### Token
 ```

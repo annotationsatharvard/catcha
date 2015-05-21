@@ -1,4 +1,4 @@
-# 0. Check Yourself
+## Check Yourself
 These instructions assume that:
 
 * You are either a developer or sysadmin.
@@ -6,35 +6,35 @@ These instructions assume that:
 * You are installing the CATCH API on a version of Debian Linux (like Ubuntu 14.04).
 * You have SSH'd onto the server to which you intend to deploy the CATCH API.
 
-# 1. Check Dependencies
+## Check Dependencies
 
-### 1.1 Install Java 7+
+### Install Java 7+
 ```
 $ sudo apt-get install openjdk-7-jre
 ```
-### 1.2 Install Tomcat 7+
+### Install Tomcat 7+
 ```
 $ sudo apt-get install tomcat7
 $ sudo apt-get install tomcat7-admin
 ```
-### 1.3 Install MySQL 5.5+
+### Install MySQL 5.5+
 ```
 $ sudo apt-get install mysql-server
 ```
-# 2. Setup Database 
+## Setup Database 
 
-### 2.1 Create the database 
+### Create the database 
 ```
 $ mysql -u root -p -e 'create database catch default charset utf8;'
 ```
 
-### 2.2 Grant permissions to database user
+### Grant permissions to database user
 ```
 mysql -u root -p -e 'grant all on catch.* to 'catch'@'localhost' identified by "<password>";'
 ```
 NOTE: For security reasons, you should probably consider using a different password.  The username and password properties should be configured using the `dataSource.username` and `dataSource.password` configuration properties in `catch-config.properties`.
 
-# 3. Configure Application
+## Configure Application
 Create a config file (catch-config.properties) to store runtime configuration properties.
 ``` 
 $ mkdir /usr/share/tomcat7/.grails
@@ -65,9 +65,9 @@ $ vi /usr/share/tomcat7/.grails/catch-config.properties
 
 NOTE: Documentation for each available configuration will be provided soon.
 
-# 4. Configure Tomcat
+## Configure Tomcat
 
-### 4.1 Allocate memory for tomcat7 
+### Allocate memory for tomcat7 
 NOTE: You will likely encounter OutOfMemoryErrors with Tomcat's default memory settings.  Therefore, we usually add a file (`/usr/share/tomcat7/bin/setenv.sh`) that is invoked by the Tomcat startup script and is used to control the amount of memory allocated to your instance of Tomcat. A very basic `setenv.sh` will look like this:  
 ```
 export CATALINA_OPTS="-Xms512m -Xmx512m -XX:MaxPermSize=256m"
@@ -79,9 +79,9 @@ Once you've edited the file, make sure to change mod properties to allow executi
 $ chmod +x /usr/share/tomcat7/bin/setenv.sh
 ```
 
-# 5. Deploy Application
+## Deploy Application
 
-### 5.1 Stop tomcat7 server
+### Stop tomcat7 server
 ```
 $ sudo service tomcat7 stop
 ```
@@ -95,7 +95,7 @@ If you wanted to do this from a shell on the server where you're installing the 
 $ wget https://github.com/annotationsatharvard/catcha/releases/download/v0.5.4/catch-0.5.4.war
 ```
 
-### 5.2 Deploy WAR to Tomcat
+### Deploy WAR to Tomcat
 ```
 $ cp catch-0.5.4.war /var/lib/tomcat7/webapps/catch.war
 ```
@@ -107,12 +107,12 @@ $ cp catch-0.5.4.war /var/lib/tomcat7/webapps/ROOT.war
 
 NOTE: You can also deploy the application using the Tomcat Manager app. Please see the [Tomcat](tomcat.md) documentation in the Admin Guide for more details.
 
-### 5.3 Start Tomcat
+### Start Tomcat
 ```
 $ sudo service tomcat7 start
 ```
 
-### 5.4 Tail catalina.out
+### Tail catalina.out
 [optional] Lastly, tail the Tomcat catalina.out log to make sure that there are no errors.
 ```
 $ tail -f /var/log/tomcat7/catalina.out
@@ -252,5 +252,4 @@ Using configuration locations: [file:./catch-config.properties, file:./catch-con
 2015-05-15 11:02:00,185 [localhost-startStop-1] INFO  conf.BootStrap  - Initializing: user
 2015-05-15 11:02:00,189 [localhost-startStop-1] INFO  conf.BootStrap  - ------------------------------------------------------------------------
 2015-05-15 11:02:00,189 [localhost-startStop-1] INFO  conf.BootStrap  - >> GROUPS
-
 ```

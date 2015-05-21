@@ -12,5 +12,5 @@ Once you have your API key and secret key, you can plug those values into your L
 See [API Docs](api.md) for more information.
 
 ### Using annotatorjs client 
-See [AnnotatorJs Docs](/user-guide/annotatorjs.md) for more information.
+See [AnnotatorJs Docs](annotatorjs.md) for more information.
 

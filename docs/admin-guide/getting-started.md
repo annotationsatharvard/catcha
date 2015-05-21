@@ -39,5 +39,5 @@ To create a new client API key you need to log into CATCH-A as an administrator.
 ### Distribute API key
 * Distribute the API and Secret keys from the Show System page to the developer.
 
-![Screenshot](/img/show-system.png)
+![Screenshot](/img/show-system-api-key.png)
 

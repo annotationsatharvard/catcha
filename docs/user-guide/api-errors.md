@@ -48,7 +48,6 @@ curl -i -X GET \
 "http://localhost:8080/catch/annotator/search?limit=10"
 ```
 ### Response
-
 ```
 HTTP/1.1 401 Unauthorized
 Server: Apache-Coyote/1.1

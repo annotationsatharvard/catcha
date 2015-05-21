@@ -5,77 +5,75 @@ Add AnnotatorJs client code to your page. See the annotator.js documentation for
 
 
 #### Example client code
-
-	<html>
-	<head>
-	<body>
-		<div id="content">
-			Hello World!
-		</div>
-
-		<script type="text/javascript" src="http://assets.annotateit.org/annotator/v1.2.5/annotator-full.min.js"/>
-		<script type="text/javascript" src="http://assets.annotateit.org/annotator/v1.2.5/annotator.min.css"/>
-
-		<script>
-		    $(function () {
-
-			var content = $('#content').annotator();
-
-			// Generate a token for each request (token generator should be accessible via a relative URL)
-			content.annotator('addPlugin', 'Auth', {
-			    tokenUrl: '<url-for-token-generator>'   // for example /client/auth/token
-			});
+NOTE: The client code has been commented out due to performance issue with highlight.js. View source to see code snippet.
 
 
-			// Connect to your annotation store
-			content.annotator('addPlugin', 'Store', {
-			    // The endpoint of the store on your server (can be relative or absolute)
-			    // Examples:
-			    //    prefix: '/store/endpoint',
-			    //    prefix: 'http://afstore.aws.af.cm/annotator',
-			    prefix: 'http://localhost:8080/catch/annotator',
+<!-- Commented out due to performance issue with highlight.js-->
+<!--
+<div id="content">
+		Hello World!
+	</div>
 
-			    // Attach the uri of the current page to all annotations to allow search.
-			    annotationData: {
-				'uri': 'http://www.client.com/page-to-be-annotated'
-			    },
-			    urls: {
-				// These are the default URLs.
-				create:  '/create',
-				read:    '/read/:id',
-				update:  '/update/:id',
-				destroy: '/destroy/:id',
-				search:  '/search'
-			    },
-			    // This will perform a "search" action rather than "read" when the plugin
-			    // loads. Will request the last 20 annotations for the current url.
-			    // eg. /store/endpoint/search?limit=20&uri=http://this/document/only
-			    loadFromSearch: {
-				'limit': 20,
-				'uri': '${createLink(action: action, controller: controller, id: id, absolute:true)}'
-			    }
-			});
+	<script type="text/javascript" src="http://assets.annotateit.org/annotator/v1.2.5/annotator-full.min.js"/>
+	<script type="text/javascript" src="http://assets.annotateit.org/annotator/v1.2.5/annotator.min.css"/>
 
-			// Optional plugins
-			content.annotator('addPlugin', 'Tags');
-			content.annotator('addPlugin', 'Filter', {
-			    filters: [
-				{
-				    label: 'Quote',
-				    property: 'quote'
-				}
-			    ]});
-			//content.annotator('addPlugin', 'Markdown');
-			//content.annotator('addPlugin', 'Permissions', {
-			//    user: 'jmiranda'
-			//});
+	<script>
+	    $(function () {
 
-		    });
-		</script>
-	</body>
-	</html>
+		var content = $('#content').annotator();
+
+		// Generate a token for each request (token generator should be accessible via a relative URL)
+		content.annotator('addPlugin', 'Auth', {
+		    tokenUrl: '<url-for-token-generator>'   // for example /client/auth/token
+		});
 
 
+		// Connect to your annotation store
+		content.annotator('addPlugin', 'Store', {
+		    // The endpoint of the store on your server (can be relative or absolute)
+		    // Examples:
+		    //    prefix: '/store/endpoint',
+		    //    prefix: 'http://afstore.aws.af.cm/annotator',
+		    prefix: 'http://localhost:8080/catch/annotator',
+
+		    // Attach the uri of the current page to all annotations to allow search.
+		    annotationData: {
+			'uri': 'http://www.client.com/page-to-be-annotated'
+		    },
+		    urls: {
+			// These are the default URLs.
+			create:  '/create',
+			read:    '/read/:id',
+			update:  '/update/:id',
+			destroy: '/destroy/:id',
+			search:  '/search'
+		    },
+		    // This will perform a "search" action rather than "read" when the plugin
+		    // loads. Will request the last 20 annotations for the current url.
+		    // eg. /store/endpoint/search?limit=20&uri=http://this/document/only
+		    loadFromSearch: {
+			'limit': 20,
+			'uri': '${createLink(action: action, controller: controller, id: id, absolute:true)}'
+		    }
+		});
+
+		// Optional plugins
+		content.annotator('addPlugin', 'Tags');
+		content.annotator('addPlugin', 'Filter', {
+		    filters: [
+			{
+			    label: 'Quote',
+			    property: 'quote'
+			}
+		    ]});
+		//content.annotator('addPlugin', 'Markdown');
+		//content.annotator('addPlugin', 'Permissions', {
+		//    user: 'jmiranda'
+		//});
+
+	    });
+	</script>
+-->
 
 ## Generate a token
 Using your favorite programming language (PHP, Python, Java) and its associated JWT library you need to write code that will allow you to generate a token that can be used by your client (see `Auth` plugin documentation in AnnotatorJs documentation for more details). 

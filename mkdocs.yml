@@ -8,7 +8,7 @@ include_search: true
 use_directory_urls: true
 copyright: Copyright &copy; 2015, <a href="https://twitter.com/justinmiranda">CATCH-A</a>
 google_analytics: ['UA-61763038-2', 'CATCH-A']
-
+markdown_extensions: [toc, tables, fenced_code]
 pages:
 - ['index.md', 'Introduction']
 
@@ -26,9 +26,10 @@ pages:
 - ['admin-guide/upgrade.md', 'Admin Guide', 'Upgrading']
 - ['admin-guide/getting-support.md', 'Admin Guide', 'Getting Support']
 
-#- ['admin-guide/mysql.md', 'Admin Guide', 'MySQL HOWTO']
-#- ['admin-guide/tomcat.md', 'Admin Guide', 'Tomcat HOWTO']
-#- ['admin-guide/ubuntu.md', 'Admin Guide', 'Ubuntu HOWTO']
+# HOWTO Guide
+- ['admin-guide/mysql.md', 'HOWTO Guide', 'MySQL HOWTO']
+- ['admin-guide/tomcat.md', 'HOWTO Guide', 'Tomcat HOWTO']
+- ['admin-guide/ubuntu.md', 'HOWTO Guide', 'Ubuntu HOWTO']
 
 # Deployment Guide
 #- ['admin-guide/deployment/aws-ec2.md', 'Deployment Guide', 'AWS Elastic Compute Cloud']
@@ -43,6 +44,7 @@ pages:
 - ['user-guide/api.md', 'User Guide', 'API Docs']
 - ['user-guide/api-errors.md', 'User Guide', 'API Error Handling']
 - ['user-guide/authentication.md', 'User Guide', 'Authentication']
+- ['user-guide/annotatorjs.md', 'User Guide', 'AnnotatorJs']
 
 # Developer Guide
 #- ['developer-guide/index.md', 'Developer Guide',  'Overview']

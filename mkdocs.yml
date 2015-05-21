@@ -19,8 +19,8 @@ pages:
 
 # Admin Guide
 #- ['admin-guide/index.md', 'Admin Guide',  'Overview']
-- ['admin-guide/getting-started.md', 'Admin Guide', 'Getting Started']
 - ['admin-guide/installation.md', 'Admin Guide',  'Installation']
+- ['admin-guide/getting-started.md', 'Admin Guide', 'Getting Started']
 - ['admin-guide/configuration.md', 'Admin Guide', 'Configuration']
 
 # User Guide

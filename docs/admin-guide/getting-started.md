@@ -1,5 +1,3 @@
-# Getting Started
-
 ## Assumptions
 * You have successfully deployed the CATCH-A web application to a cloud service of your choosing (AWS EC2, AWS EBS, DigitalOcean, RimuHosting, etc).
 
@@ -28,7 +26,7 @@ To create a new client API key you need to log into CATCH-A as an administrator.
 * Copy the API key from the subsequent page (we'll use it in the client's token generation code below).
 
 ### Add AnnotatorJs client code to your page
-See the annotator.js documentation for http://docs.annotatorjs.org/en/latest/.  Your client code will connect to the annotator.js API you installed in the Developer instructions (e.g. http://localhost:8080/catch/annotator).
+See the annotator.js documentation for [](http://docs.annotatorjs.org/en/latest/).  Your client code will connect to the annotator.js API you installed in the [Installation](/admin-guide/installation) instructions (e.g. http://localhost:8080/catch/annotator).
 
 #### Example client code
 
@@ -103,14 +101,15 @@ See the annotator.js documentation for http://docs.annotatorjs.org/en/latest/.  
 
 
 
-### Generate a token
+## Generate a token
 Using your favorite programming language (PHP, Python, Java) and its associated JWT library you need to write code that will allow you to generate a token that can be used by your client (see `Auth` plugin documentation in AnnotatorJs documentation for more details). 
 
-#### Resources
-http://docs.annotatorjs.org/en/latest/plugins/auth.html
-http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html
 
-#### Example code 
+### Resources
+* http://docs.annotatorjs.org/en/latest/plugins/auth.html
+* http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html
+
+### Example Code (Java) 
 This code was written in Groovy using the Nimbus JOSE JWT library (https://bitbucket.org/connect2id/nimbus-jose-jwt/wiki/Home).  In addition to the token generation code, you need to expose an HTTP endpoint that renders the generated token to the HTTP response (http://docs.annotatorjs.org/en/latest/authentication.html).  For example, I wrote a quick demo application that ran at http://localhost:8081/afdemo/index.html.  The demo app included the client code above (rendered as an HTML page) and a token generation endpoint at http://localhost:8081/afdemo/token/auth that simply rendered the token generated below.
 
 
@@ -153,3 +152,25 @@ This code was written in Groovy using the Nimbus JOSE JWT library (https://bitbu
 		return jwsObject.serialize();
 	}
 
+### Example Code (Python)
+ 
+	import datetime
+	import jwt
+	
+	# Replace these with your details
+	CONSUMER_KEY = 'yourconsumerkey'
+	CONSUMER_SECRET = 'yourconsumersecret'
+	
+	# Only change this if you're sure you know what you're doing
+	CONSUMER_TTL = 86400
+	
+	def generate_token(user_id):
+		return jwt.encode({
+			'consumerKey': CONSUMER_KEY,
+			'userId': user_id,
+			'issuedAt': _now().isoformat() + 'Z',
+			'ttl': CONSUMER_TTL
+		}, CONSUMER_SECRET)
+	
+	def _now():
+		return datetime.datetime.utcnow().replace(microsecond=0)

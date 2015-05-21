@@ -35,7 +35,7 @@ to [GitHub Issues](https://github.com/annotationsatharvard/catcha/issues) if you
 mechanisms.
 ```
 
-## Discusion on how the API Key & Secret Key are used
+## API Key & Secret Key
 
 ### API Key 
 The API key is generated when a new API system is created in the backend. Each CATCH API consumer is required to 

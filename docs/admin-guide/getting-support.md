@@ -1,0 +1,1 @@
+To get support with your CATCH API instance, please create a ticket in [GitHub issues](https://github.com/annotationsatharvard/catcha/issues) with very specific details about the problem you have encountered (including screenshots and steps to reproduce).

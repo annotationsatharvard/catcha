@@ -80,7 +80,6 @@ class AuthTokenService {
         //payload: {"iat": 1396290995, "d": {"issuedAt": "2014-03-31T14:36:35.017866-4:00", "consumerKey": "cbdf435b-a609-4126-b58a-589c40075075", "userId": "", "ttl": 86400}, "v": 0}
 
         try {
-
             jwsObject = JWSObject.parse(token)
             println "header: " + jwsObject.header
             println "payload: " + jwsObject.payload
@@ -103,10 +102,14 @@ class AuthTokenService {
         // Make sure a system API exists for this consumer key
         def payload = jwsObject.payload.toJSONObject()
         def consumerKey = payload?.consumerKey?:payload?.d?.consumerKey
+        String issuedAt = payload?.issuedAt?:payload?.d?.issuedAt
+        Integer ttl = payload?.ttl?:payload?.d?.ttl?:86400;
+        String uid = payload?.uid?:payload?.d?.uid
 
         println "consumerKey: " + consumerKey
-        println "issuedAt: " + payload?.issuedAt
-        println "ttl: " + payload?.ttl
+        println "issuedAt: " + issuedAt
+        println "ttl: " + ttl
+        println "uid: " + uid
 
         log.info "Checking to see if API key ${consumerKey} exists?"
         SystemApi systemApi = SystemApi.findByApikey(consumerKey)
@@ -129,30 +132,28 @@ class AuthTokenService {
 
         // Make sure there's an issue time and that the token has not expired
         // Should implement this validation, but it's not really critical at the moment
-        log.info "Validating token ${token}"
-        if (verify) {
-            try {
-                Date now = new Date();
-                Integer ttl = payload?.ttl ?: 86400;
-                if (!payload?.issuedAt) {
-                    throw new IllegalArgumentException("Payload is missing valid 'issuedAt' claim. See annotatorjs docs for more details (http://docs.annotatorjs.org/en/latest/authentication.html).")
-                }
-                //Date issuedAt = Date.parse(payload?.issuedAt, "yyyy-MM-dd'T'hh:mm:ssZ")
-                Date issuedAt = simpleDateFormat.parse(payload?.issuedAt)
-                use(groovy.time.TimeCategory) {
-                    Date expiryDate = issuedAt + ttl.seconds
-                    if (issuedAt.after(now)) {
-                        throw new IllegalArgumentException("Token is not valid yet")
-                    }
-                    if (expiryDate.before(now)) {
-                        throw new IllegalArgumentException("Token expired on " + expiryDate)
-                    }
-                }
-
-            } catch (ParseException e) {
-                throw new IllegalArgumentException("Error occurred while parsing 'issuedAt' claim. See annotatorjs docs for more details (http://docs.annotatorjs.org/en/latest/authentication.html).")
-            }
-        }
+//        log.info "Validating token ${token}"
+//        if (verify) {
+//            try {
+//                Date now = new Date();
+//                if (!issuedAt) {
+//                    throw new IllegalArgumentException("Payload is missing valid 'issuedAt' claim. See annotatorjs docs for more details (http://docs.annotatorjs.org/en/v1.2.x/authentication.html).")
+//                }
+//                Date issuedDate = simpleDateFormat.parse(issuedAt)
+//                use(groovy.time.TimeCategory) {
+//                    Date expiryDate = issuedDate + ttl.seconds
+//                    if (issuedDate.after(now)) {
+//                        throw new IllegalArgumentException("Token is not valid yet")
+//                    }
+//                    if (expiryDate.before(now)) {
+//                        throw new IllegalArgumentException("Token expired on " + expiryDate)
+//                    }
+//                }
+//
+//            } catch (ParseException e) {
+//                throw new IllegalArgumentException("Error occurred while parsing 'issuedAt' claim. See annotatorjs docs for more details (http://docs.annotatorjs.org/en/v1.2.x/authentication.html).")
+//            }
+//        }
 
         // Verify signature
         log.info "Verifying token signature"

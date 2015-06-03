@@ -27,7 +27,7 @@ class AuthTokenFilters {
                 }
                 else {
                     try {
-                        return authTokenService.validateAuthToken(token)
+                        return authTokenService.validateAuthToken(token, true)
 
                     } catch (IllegalArgumentException e) {
                         response.status = 401

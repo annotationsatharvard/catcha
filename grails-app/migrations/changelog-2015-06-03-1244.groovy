@@ -12,15 +12,5 @@ databaseChangeLog = {
 		modifyDataType(columnName: "text", newDataType: "text", tableName: "annotation")
 	}
 
-	changeSet(author: "jmiranda (generated)", id: "1433349892335-4") {
-		createIndex(indexName: "annotation_idx", tableName: "annotation") {
-			column(name: "media")
 
-			column(name: "uri")
-
-			column(name: "userid")
-
-			column(name: "username")
-		}
-	}
 }

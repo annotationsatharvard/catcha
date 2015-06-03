@@ -74,16 +74,15 @@ grails.hibernate.cache.queries = false
 environments {
     development {
         grails.logging.jul.usebridge = true
-        grails.serverURL = "http://localhost:8080"
     }
     test {
-        grails.serverURL = "http://localhost:8080"
+
     }
     production {
         grails.dbconsole.enabled = true
         grails.logging.jul.usebridge = false
         // TODO: grails.serverURL = "http://www.changeme.com"
-        grails.serverURL = "https://catch.harvardx.harvard.edu"
+        // grails.serverURL = "https://catch.harvardx.harvard.edu"
         af.shared.name = "CATCH-A"
         af.shared.title = "CATCH-A, Annotations at Harvard"
 

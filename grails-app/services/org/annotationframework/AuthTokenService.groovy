@@ -20,7 +20,7 @@ import java.text.SimpleDateFormat
 class AuthTokenService {
 
 
-    static simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ssZ")
+    static simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss z")
 
     def generateAuthToken(String consumerKey, String userId, Date issuedAt, Integer ttl) {
 
@@ -31,7 +31,7 @@ class AuthTokenService {
         jwtClaims.setJWTID(UUID.randomUUID().toString());
         jwtClaims.setCustomClaim("userId", userId);
         jwtClaims.setCustomClaim("consumerKey", consumerKey);
-        jwtClaims.setCustomClaim("issuedAt", issuedAt.format("yyyy-MM-dd'T'hh:mm:ssZ")); // e.g. 2013-08-30T22:23:30+00:00
+        jwtClaims.setCustomClaim("issuedAt", issuedAt.format("yyyy-MM-dd'T'HH:mm:ss z")); // e.g. 2013-08-30T22:23:30+00:00
         jwtClaims.setCustomClaim("ttl", ttl);
         // jwtClaims.setCustomClaim("email", user.email);
 

@@ -19,8 +19,9 @@ databaseChangeLog = {
     }
 
     changeSet(author: "jmiranda (generated)", id: "1433356780261-4") {
+        validCheckSum '3:ccf18f8fb3e0b918130a8cbf50960b1d'
         createIndex(indexName: "annotation_uri_idx", tableName: "annotation") {
-            column(name: "uri")
+            column(name: "uri", type: "varchar(255)")
         }
     }
 

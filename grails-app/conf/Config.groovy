@@ -143,10 +143,10 @@ log4j = {
             'grails.plugin.springcache',
             'grails.plugin.springsecurity',
             'BootStrap',
-            'liquibase',
-            'org.grails.plugins.elasticsearch',
-            'org.elasticsearch',
-            'org.apache.lucene'
+            'liquibase'
+            //'org.grails.plugins.elasticsearch',
+            //'org.elasticsearch',
+            //'org.apache.lucene'
 
     debug   'org.apache.tomcat.jdbc.pool',
             'org.apache.commons.dbcp'
@@ -239,11 +239,10 @@ grails.plugins.httplogger.includeUrls = ['/annotator/**']
 //grails.plugin.httplogger.excludeUrls = ['/css/**', '/**/*.js']
 
 // elasticsearch
-
 //elasticSearch.disableAutoIndex = true
-elasticSearch.client.mode = 'transport'
-elasticSearch.datastoreImpl = "hibernateDatastore"
-elasticSearch.client.hosts = [[host:'localhost', port:9300]]
-elasticSearch.bulkIndexOnStartup = false
-elasticSearch.maxBulkRequest = 1000
-elasticSearch.includeTransients = true
+//elasticSearch.client.mode = 'transport'
+//elasticSearch.datastoreImpl = "hibernateDatastore"
+//elasticSearch.client.hosts = [[host:'localhost', port:9300]]
+//elasticSearch.bulkIndexOnStartup = false
+//elasticSearch.maxBulkRequest = 1000
+//elasticSearch.includeTransients = true

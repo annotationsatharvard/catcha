@@ -13,6 +13,14 @@ import org.mindinformatics.ann.framework.module.security.systems.SystemApi
 @Mock([SystemApi])
 class AuthTokenServiceTests {
 
+
+    @Test
+    void generateToken_shouldGenerateAndVerifyToken() {
+        SystemApi.build(name: "openannotation", apikey: "0cbfa370-b73c-4e3a-ae46-582df284b7c3", secretKey: "{shared key}", enabled:true)
+        def actualToken = service.generateAuthToken("openannotation", "jmiranda", 86400, new Date(2013, 1, 1))
+        assertTrue service.validateAuthToken(actualToken)
+    }
+
     @Test
     void validateAuthToken() {
         //assertTrue service.validateAuthToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEyMzQ1Njc4OTAsIm5hbWUiOiJKb2huIERvZSIsImFkbWluIjp0cnVlfQ.eoaDVGTClRdfxUZXiPs3f8FmJDkDE_VCQFXqKxpLsts")
@@ -52,7 +60,7 @@ class AuthTokenServiceTests {
         }
     }
 
-    @Test
+    @Ignore // disabled feature
     void generateAuthToken_shouldFailWithExpiryError() {
         SystemApi.build(apikey: "consumer-key", secretKey: "super-secret-key-shh", enabled: true )
         String authToken = service.generateAuthToken("consumer-key", "user-id", new Date()-2, 86400)
@@ -64,7 +72,7 @@ class AuthTokenServiceTests {
         assert message.startsWith("Token expired on ")
     }
 
-    @Test
+    @Ignore // disabled feature
     void generateAuthToken_shouldFailWithIssuedAtError() {
         SystemApi.build(apikey: "consumer-key", secretKey: "super-secret-key-shh", enabled: true)
         String authToken = service.generateAuthToken("consumer-key", "user-id", new Date()+1, 86400)

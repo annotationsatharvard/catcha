@@ -14,7 +14,7 @@ environments {
             url = "jdbc:mysql://localhost:3306/catch?useUnicode=yes&characterEncoding=UTF-8&autoReconnect=true"
             username = "catch"
             password = "catch"
-            loggingSql = true
+            loggingSql = false
         }
     }
     test {

@@ -22,6 +22,15 @@ class AuthTokenService {
 
     static simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss z")
 
+    /**
+     * Generate an authorization token.
+     *
+     * @param consumerKey
+     * @param userId
+     * @param issuedAt
+     * @param ttl
+     * @return
+     */
     def generateAuthToken(String consumerKey, String userId, Date issuedAt, Integer ttl) {
 
         // Given a user instance
@@ -171,4 +180,57 @@ class AuthTokenService {
         return false;
 
     }
+
+    /**
+     *
+     * @param token
+     * @return
+     def verifyToken(token) {
+     def jwsObject = JWSObject.parse(token);
+     JWSVerifier verifier = new MACVerifier(SHARED_KEY.getBytes());
+     println "Payload: ${jwsObject.payload}"
+     return jwsObject.verify(verifier)
+     }
+     */
+
+    /**
+     * Generate a token to be used by the annotator client.  Not used at the moment.
+     *
+     * See https://github.com/okfn/annotator/wiki/Authentication
+     def generateToken() {
+     // Create JWS payload
+     Payload payload = new Payload("Hello world!");
+
+     // Create JWS header with HS256 algorithm
+     JWSHeader header = new JWSHeader(JWSAlgorithm.HS256);
+     header.setContentType("text/plain");
+
+     // Create JWS object
+     JWSObject jwsObject = new JWSObject(header, payload);
+
+     // Create HMAC signer
+     String sharedKey = "our-shared-key";
+     JWSSigner signer = new MACSigner(sharedKey.getBytes());
+     jwsObject.sign(signer);
+
+     // Serialise JWS object to compact format
+     String s = jwsObject.serialize();
+     println("Serialised JWS object: " + s);
+
+     // Parse back and check signature
+     jwsObject = JWSObject.parse(s);
+
+     JWSVerifier verifier = new MACVerifier(sharedKey.getBytes());
+     boolean verifiedSignature = jwsObject.verify(verifier);
+     if (verifiedSignature)
+     println("Verified JWS signature!");
+     else
+     println("Bad JWS signature!");
+
+     println("Recovered payload message: " + jwsObject.getPayload());
+     return jwsObject.getPayload()
+     }
+     */
+
+
 }

@@ -65,6 +65,8 @@ grails.project.dependency.resolution = {
 		}
 		compile ("org.apache.jena:jena-arq:2.9.3")
 
+
+        compile("org.apache.httpcomponents:httpcore:4.4.1")
         // Commented this out because this dependency should be brought in with the compile scope above.
         //runtime "org.semweb4j:rdf2go.api:4.8.2"
 		//runtime "org.semweb4j:rdf2go.impl.sesame:4.8.2"
@@ -110,6 +112,5 @@ grails.project.dependency.resolution = {
         compile (":functional-test:2.0.RC1") {
             excludes "commons-codec"
         }
-
     }
 }

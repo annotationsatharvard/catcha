@@ -143,10 +143,15 @@ log4j = {
             'grails.plugin.springcache',
             'grails.plugin.springsecurity',
             'BootStrap',
-            'liquibase'
+            'liquibase',
+            'org.grails.plugins.elasticsearch',
+            'org.elasticsearch',
+            'org.apache.lucene'
 
     debug   'org.apache.tomcat.jdbc.pool',
             'org.apache.commons.dbcp'
+
+
 
     /*
      debug 'org.codehaus.groovy.grails.plugins.springsecurity',
@@ -188,7 +193,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
     '/ajaxDashboard/**'		: ['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_USER'],
     '/annotation/**'		: ['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_USER'],
     '/dashboard/**'			: ['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_USER'],
-    '/dbconsole/**'			: ['permitAll'],
+    '/dbconsole/**'			: ['ROLE_ADMIN'],
     '/tag/**'		        : ['ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_USER']
 ]
 // -------------------------------------------------------------------------------------------------------------------------------------------
@@ -232,3 +237,13 @@ grails.plugins.httplogger.includeUrls = ['/annotator/**']
 //
 //grails.plugin.httplogger.includeUrls = ['/api/**',]
 //grails.plugin.httplogger.excludeUrls = ['/css/**', '/**/*.js']
+
+// elasticsearch
+
+//elasticSearch.disableAutoIndex = true
+elasticSearch.client.mode = 'transport'
+elasticSearch.datastoreImpl = "hibernateDatastore"
+elasticSearch.client.hosts = [[host:'localhost', port:9300]]
+elasticSearch.bulkIndexOnStartup = false
+elasticSearch.maxBulkRequest = 1000
+elasticSearch.includeTransients = true

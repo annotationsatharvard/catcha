@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/annotationsatharvard/catcha.png?label=ready&title=Ready)](https://waffle.io/annotationsatharvard/catcha)
 catcha
 ======
 

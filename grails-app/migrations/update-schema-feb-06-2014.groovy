@@ -33,7 +33,8 @@ databaseChangeLog = {
 	}
 
 	changeSet(author: "jmiranda (generated)", id: "1391669329771-7") {
-		dropForeignKeyConstraint(baseTableName: "tag", baseTableSchemaName: "catch", constraintName: "FK1BF9A28835BA1")
+		validCheckSum '3:ac5a6caf2c4be46d7bd830c40a2e38c9'
+		dropForeignKeyConstraint(baseTableName: "tag", constraintName: "FK1BF9A28835BA1")
 	}
 
 	changeSet(author: "jmiranda (generated)", id: "1391669329771-10") {

@@ -80,45 +80,32 @@ class AuthTokenService {
         return validateAuthToken(token, true)
     }
 
+    /**
+     * Example Annotator token format
+     *
+     * header: {"alg":"HS256","cty":"text\/plain","typ":"JWS"}
+     * payload: {"consumerKey":"openannotation","issuedAt":"2013-08-31T06:34:42-0400","userId":"jmiranda","jti":"0f4ce532-dbb3-4715-8601-d3fc34d9b460","ttl":86400,"iat":1377988482}
+     * payload: {"iat": 1396290995, "d": {"issuedAt": "2014-03-31T14:36:35.017866-4:00", "consumerKey": "cbdf435b-a609-4126-b58a-589c40075075", "userId": "", "ttl": 86400}, "v": 0}
+
+     * @param token
+     * @param verify
+     * @return
+     */
     def validateAuthToken(String token, boolean verify) {
 
-        JWSObject jwsObject
-        // Annotator token format
-        //header: {"alg":"HS256","cty":"text\/plain","typ":"JWS"}
-        //payload: {"consumerKey":"openannotation","issuedAt":"2013-08-31T06:34:42-0400","userId":"jmiranda","jti":"0f4ce532-dbb3-4715-8601-d3fc34d9b460","ttl":86400,"iat":1377988482}
-        //payload: {"iat": 1396290995, "d": {"issuedAt": "2014-03-31T14:36:35.017866-4:00", "consumerKey": "cbdf435b-a609-4126-b58a-589c40075075", "userId": "", "ttl": 86400}, "v": 0}
-
-        try {
-            jwsObject = JWSObject.parse(token)
-            println "header: " + jwsObject.header
-            println "payload: " + jwsObject.payload
-            println "state: " + jwsObject.state
-            println "signature: " + jwsObject.signature
-        }
-        catch (ParseException e){
-            log.error("Error parsing JSON web token ${token}: " + e.message, e)
-            throw e;
-        }
-        catch (NoSuchMethodError e) {
-            log.error("No such method error while parsing JSON web token ${token}: " + e.message, e)
-            throw e;
-        }
-        catch (RuntimeException e) {
-            log.error("Fatal runtime error while parsing JSON web token ${token}: " + e.message, e)
-            throw e;
-        }
+        JWSObject jwsObject = getJwsObject(token)
 
         // Make sure a system API exists for this consumer key
         def payload = jwsObject.payload.toJSONObject()
         def consumerKey = payload?.consumerKey?:payload?.d?.consumerKey
         String issuedAt = payload?.issuedAt?:payload?.d?.issuedAt
         Integer ttl = payload?.ttl?:payload?.d?.ttl?:86400;
-        String uid = payload?.uid?:payload?.d?.uid
+        String uid = payload?.uid ?: payload?.d?.uid ?: payload?.userId
 
-        println "consumerKey: " + consumerKey
-        println "issuedAt: " + issuedAt
-        println "ttl: " + ttl
-        println "uid: " + uid
+        log.info "consumerKey: " + consumerKey
+        log.info "issuedAt: " + issuedAt
+        log.info "ttl: " + ttl
+        log.info "uid: " + uid
 
         log.info "Checking to see if API key ${consumerKey} exists?"
         SystemApi systemApi = SystemApi.findByApikey(consumerKey)
@@ -179,6 +166,46 @@ class AuthTokenService {
 
         return false;
 
+    }
+
+    String getUid(String token) {
+        String uid
+
+        log.info "Token " + token
+        JWSObject jwsObject = getJwsObject(token)
+        if (jwsObject) {
+            def payload = jwsObject.payload.toJSONObject()
+            uid = payload?.uid ?: payload?.d?.uid ?: payload?.userId
+        }
+        else {
+            throw IllegalArgumentException("Unable to find UID in token")
+        }
+        return uid;
+    }
+
+
+    JWSObject getJwsObject(String token) {
+        JWSObject jwsObject
+        try {
+            jwsObject = JWSObject.parse(token)
+            println "header: " + jwsObject.header
+            println "payload: " + jwsObject.payload
+            println "state: " + jwsObject.state
+            println "signature: " + jwsObject.signature
+        }
+        catch (ParseException e){
+            log.error("Error parsing JSON web token ${token}: " + e.message, e)
+            throw e;
+        }
+        catch (NoSuchMethodError e) {
+            log.error("No such method error while parsing JSON web token ${token}: " + e.message, e)
+            throw e;
+        }
+        catch (RuntimeException e) {
+            log.error("Fatal runtime error while parsing JSON web token ${token}: " + e.message, e)
+            throw e;
+        }
+        return jwsObject
     }
 
     /**

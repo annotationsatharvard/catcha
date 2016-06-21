@@ -53,9 +53,8 @@ $ git clone https://github.com/annotationsatharvard/catcha.git
 ```
 
 #### Download plugin source code
-It's important that these plugins are located under the `catcha/annotationframework` directory -- they are included as "local plugin" dependencies within the application's BuildConfig.groovy.
+There are several plugins that are included as "local plugin" dependencies within the application's `BuildConfig.groovy`. It's important that the root directory of these plugins (`annotationframework`) is located at the same level as the `catcha` directory.  
 ```
-$ cd catcha 
 $ mkdir annotationframework
 $ cd annotationframework
 $ git clone https://github.com/annotationframework/AfPersistence.git

@@ -2,7 +2,7 @@
 catcha
 ======
 
-Catch-A - Catching Annotation
+Catching Annotation (Catch-A)
 
 This software was created for the Harvard Library Labs project CATCH (https://osc.hul.harvard.edu/liblab/proj/catch) awarded to Phil Desenne, Martin Schreiner and Paolo Ciccarese
 

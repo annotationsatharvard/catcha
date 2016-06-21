@@ -8,7 +8,7 @@ This software was created for the Harvard Library Labs project CATCH (https://os
 
 The software was originally written by:
 * Dr. Paolo Ciccarese http://paolociccarese.info
-* Justin Miranda
+* Justin Miranda https://github.com/jmiranda
 
 You can find the core plugin dependencies at [https://github.com/annotationframework](https://github.com/annotationframework).
 

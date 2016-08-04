@@ -1,6 +1,6 @@
 language: groovy
 jdk:
-- openjdk7
+  - openjdk7
 before_install:
   #
   # The following block will resolve OpenJDK7 crash issue in Travis
@@ -10,6 +10,13 @@ before_install:
   - sudo hostname "$(hostname | cut -c1-63)"
   - sed -e "s/^\\(127\\.0\\.0\\.1.*\\)/\\1 $(hostname | cut -c1-63)/" /etc/hosts | sudo tee /etc/hosts
   - cat /etc/hosts # optionally check the content *after*
+
+  # Install inline plugin dependencies
+  - mkdir annotationframework
+  - cd annotationframework
+  - git clone https://github.com/annotationframework/AfPersistence.git
+  - git clone https://github.com/annotationframework/AfSecurity.git
+  - git clone https://github.com/annotationframework/AfShared.git
 script: ./grailsw refresh-dependencies
   && ./grailsw "test-app unit:"
   && ./grailsw "test-app integration:"

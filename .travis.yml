@@ -17,6 +17,7 @@ before_install:
   - git clone https://github.com/annotationframework/AfPersistence.git
   - git clone https://github.com/annotationframework/AfSecurity.git
   - git clone https://github.com/annotationframework/AfShared.git
+  - cd ..
 script: ./grailsw refresh-dependencies
   && ./grailsw "test-app unit:"
   && ./grailsw "test-app integration:"

@@ -1,4 +1,7 @@
 [![Stories in Ready](https://badge.waffle.io/annotationsatharvard/catcha.png?label=ready&title=Ready)](https://waffle.io/annotationsatharvard/catcha)
+
+[![Build Status](https://travis-ci.org/annotationframework/AfPersistence.svg?branch=master)](https://travis-ci.org/annotationframework/AfPersistence)
+
 catcha
 ======
 

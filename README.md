@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/annotationsatharvard/catcha.svg?branch=master)](https://travis-ci.org/annotationsatharvard/catcha)
 
+[![Documentation Status](https://readthedocs.org/projects/catcha/badge/?version=latest)](http://catcha.readthedocs.io/en/latest/?badge=latest)
+
 catcha
 ======
 

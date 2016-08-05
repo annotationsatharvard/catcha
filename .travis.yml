@@ -12,12 +12,14 @@ before_install:
   - cat /etc/hosts # optionally check the content *after*
 
   # Install inline plugin dependencies
+  - pwd
+  - cd ..
   - mkdir annotationframework
   - cd annotationframework
   - git clone https://github.com/annotationframework/AfPersistence.git
   - git clone https://github.com/annotationframework/AfSecurity.git
   - git clone https://github.com/annotationframework/AfShared.git
-  - cd ..
+  - cd ../catcha
 script: ./grailsw refresh-dependencies
   && ./grailsw "test-app unit:"
   && ./grailsw "test-app integration:"

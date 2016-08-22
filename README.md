@@ -99,8 +99,24 @@ $ grails run-app
 ```
 
 
+## Run with Docker
 
+### Start application
 
+```
+docker-compose up -d
+```
 
+Docker will download official MySQL image and build catcha image. Docker-compose will create a docker network and run both images. Once they are started, the application can be accessed at http://localhost:8080.
 
+### Stop application
 
+```
+docker-compose stop
+```
+
+### Tear down application
+
+```
+docker-compose down
+```

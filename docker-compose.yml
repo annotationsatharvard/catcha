@@ -1,0 +1,20 @@
+version: '2'
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+      - "./.data/db:/var/lib/mysql"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: catch
+      MYSQL_USER: catch
+      MYSQL_PASSWORD: catch
+  app:
+    build: .
+    depends_on:
+      - db
+    volumes:
+      - "./.data/app:/usr/local/tomcat/webapps/ROOT/uploads"
+    ports:
+      - "8080:8080"

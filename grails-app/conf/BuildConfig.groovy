@@ -11,9 +11,9 @@ grails.project.source.level = 1.6
 //   run: [maxMemory:1024, minMemory:64, debug:false, maxPerm:256]
 //]
 
-grails.plugin.location.'af-shared' = '../annotationframework/AfShared'
-grails.plugin.location.'af-security' = '../annotationframework/AfSecurity'
-grails.plugin.location.'af-persistence' = '../annotationframework/AfPersistence'
+grails.plugin.location.'af-shared' = 'plugins/AfShared'
+grails.plugin.location.'af-security' = 'plugins/AfSecurity'
+grails.plugin.location.'af-persistence' = 'plugins/AfPersistence'
 
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
@@ -67,6 +67,8 @@ grails.project.dependency.resolution = {
 
 
         compile("org.apache.httpcomponents:httpcore:4.4.1")
+        runtime 'joda-time:joda-time:2.9.4'
+
         // Commented this out because this dependency should be brought in with the compile scope above.
         //runtime "org.semweb4j:rdf2go.api:4.8.2"
 		//runtime "org.semweb4j:rdf2go.impl.sesame:4.8.2"

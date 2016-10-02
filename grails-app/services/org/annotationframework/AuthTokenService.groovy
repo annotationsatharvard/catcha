@@ -100,7 +100,7 @@ class AuthTokenService {
         def consumerKey = payload?.consumerKey?:payload?.d?.consumerKey
         String issuedAt = payload?.issuedAt?:payload?.d?.issuedAt
         Integer ttl = payload?.ttl?:payload?.d?.ttl?:86400;
-        String uid = payload?.uid ?: payload?.d?.uid ?: payload?.userId
+        String uid = payload?.uid ?: payload?.d?.uid ?: payload?.userId ?: payload?.d.userId
 
         log.info "consumerKey: " + consumerKey
         log.info "issuedAt: " + issuedAt
@@ -175,7 +175,7 @@ class AuthTokenService {
         JWSObject jwsObject = getJwsObject(token)
         if (jwsObject) {
             def payload = jwsObject.payload.toJSONObject()
-            uid = payload?.uid ?: payload?.d?.uid ?: payload?.userId
+            uid = payload?.uid ?: payload?.d?.uid ?: payload?.userId ?: payload?.d?.userId
         }
         else {
             throw IllegalArgumentException("Unable to find UID in token")

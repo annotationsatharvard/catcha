@@ -19,7 +19,7 @@ You can find the core plugin dependencies at [https://github.com/annotationframe
 # Getting Started
 
 ## Support
-Click on the Slack badge above to start a discussion with developers and/or fellow users.
+Start a discussion on our [Slack](http://slack.annotationhub.org). Great place to ask questions, discuss feature requests, and report bugs.
 
 ## Implementer Installation 
 * Use the Run With Docker installation instructions below.

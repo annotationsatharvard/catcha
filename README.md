@@ -1,6 +1,7 @@
 [![Stories in Ready](https://badge.waffle.io/annotationsatharvard/catcha.png?label=ready&title=Ready)](https://waffle.io/annotationsatharvard/catcha)
 [![Build Status](https://travis-ci.org/annotationsatharvard/catcha.svg?branch=master)](https://travis-ci.org/annotationsatharvard/catcha)
 [![Documentation Status](https://readthedocs.org/projects/catcha/badge/?version=latest)](http://catcha.readthedocs.io/en/latest/?badge=latest)
+[![Slack Status](http://slack.annotationhub.org/badge.svg)](http://slack.annotationhub.org)
 
 catcha
 ======
@@ -16,6 +17,13 @@ The software was originally written by:
 You can find the core plugin dependencies at [https://github.com/annotationframework](https://github.com/annotationframework).
 
 # Getting Started
+
+## Support
+Click on the Slack badge above to start a discussion with developers and/or fellow users.
+
+## Implementer Installation 
+* Use the Run With Docker installation instructions below.
+* Follow installation instructions on [catcha.readthedocs.io] (http://catcha.readthedocs.io/en/latest/admin-guide/installation/)
 
 ## Developer Installation
 

@@ -20,7 +20,7 @@ import java.text.SimpleDateFormat
 class AuthTokenService {
 
 
-    static simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss z")
+    static simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssX")
 
     /**
      * Generate an authorization token.
@@ -40,7 +40,7 @@ class AuthTokenService {
         jwtClaims.setJWTID(UUID.randomUUID().toString());
         jwtClaims.setCustomClaim("userId", userId);
         jwtClaims.setCustomClaim("consumerKey", consumerKey);
-        jwtClaims.setCustomClaim("issuedAt", issuedAt.format("yyyy-MM-dd'T'HH:mm:ss z")); // e.g. 2013-08-30T22:23:30+00:00
+        jwtClaims.setCustomClaim("issuedAt", issuedAt.format("yyyy-MM-dd'T'HH:mm:ssX")); // e.g. 2013-08-30T22:23:30+00:00
         jwtClaims.setCustomClaim("ttl", ttl);
         // jwtClaims.setCustomClaim("email", user.email);
 
@@ -128,28 +128,28 @@ class AuthTokenService {
 
         // Make sure there's an issue time and that the token has not expired
         // Should implement this validation, but it's not really critical at the moment
-//        log.info "Validating token ${token}"
-//        if (verify) {
-//            try {
-//                Date now = new Date();
-//                if (!issuedAt) {
-//                    throw new IllegalArgumentException("Payload is missing valid 'issuedAt' claim. See annotatorjs docs for more details (http://docs.annotatorjs.org/en/v1.2.x/authentication.html).")
-//                }
-//                Date issuedDate = simpleDateFormat.parse(issuedAt)
-//                use(groovy.time.TimeCategory) {
-//                    Date expiryDate = issuedDate + ttl.seconds
-//                    if (issuedDate.after(now)) {
-//                        throw new IllegalArgumentException("Token is not valid yet")
-//                    }
-//                    if (expiryDate.before(now)) {
-//                        throw new IllegalArgumentException("Token expired on " + expiryDate)
-//                    }
-//                }
-//
-//            } catch (ParseException e) {
-//                throw new IllegalArgumentException("Error occurred while parsing 'issuedAt' claim. See annotatorjs docs for more details (http://docs.annotatorjs.org/en/v1.2.x/authentication.html).")
-//            }
-//        }
+        log.info "Validating token ${token}"
+        if (verify) {
+            try {
+                Date now = new Date();
+                if (!issuedAt) {
+                    throw new IllegalArgumentException("Payload is missing valid 'issuedAt' claim. See annotatorjs docs for more details (http://docs.annotatorjs.org/en/v1.2.x/authentication.html).")
+                }
+                Date issuedDate = simpleDateFormat.parse(issuedAt)
+                use(groovy.time.TimeCategory) {
+                    Date expiryDate = issuedDate + ttl.seconds
+                    if (issuedDate.after(now)) {      // 27feb17 naomi: assumes UTC, why check for date in future?
+                        throw new IllegalArgumentException("Token is not valid yet")
+                    }
+                    if (expiryDate.before(now)) {
+                        throw new IllegalArgumentException("Token expired on " + expiryDate)
+                    }
+                }
+
+            } catch (ParseException e) {
+                throw new IllegalArgumentException("Error occurred while parsing 'issuedAt' claim. See annotatorjs docs for more details (http://docs.annotatorjs.org/en/v1.2.x/authentication.html).  ----" + e.getStackTrace())
+            }
+        }
 
         // Verify signature
         log.info "Verifying token signature"

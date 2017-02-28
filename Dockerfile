@@ -1,18 +1,28 @@
-FROM tomcat:7
+FROM openjdk:7-jdk
 
-ENV version v0.5.12
 ENV CATALINA_OPTS -Xms512m -Xmx512m -XX:MaxPermSize=256m
+ENV GRAILS_VERSION 2.2.5
+ENV GRAILS_HOME /opt/grails
+ENV PATH $GRAILS_HOME/bin:$PATH
 
-RUN  mkdir -p /root/.grails
-COPY catch-config.properties /root/.grails
+WORKDIR /opt
 
-RUN rm -rf /usr/local/tomcat/webapps/ROOT \
-    && curl -L -o /usr/local/tomcat/webapps/ROOT.war https://github.com/annotationsatharvard/catcha/releases/download/${version}/catch.war \
-    && mkdir -p /usr/local/tomcat/webapps/ROOT \
-    && unzip /usr/local/tomcat/webapps/ROOT.war -d /usr/local/tomcat/webapps/ROOT \
-    # replace db host for docker-compose. This can be deprecated once the db parameters can be passed through environment variables
-    && sed -i -e 's/mysql:\/\/localhost:3306/mysql:\/\/db:3306/' \
-      -e 's/catch_test/catch/' \
-      /root/.grails/catch-config.properties
+RUN curl -s -L -o grails.zip https://github.com/grails/grails-core/releases/download/v${GRAILS_VERSION}/grails-${GRAILS_VERSION}.zip \
+    && unzip -q grails.zip \
+    && rm grails.zip \
+    && ln -s grails-${GRAILS_VERSION} grails
 
-VOLUME ['/usr/local/tomcat/webapps/ROOT/uploads']
+WORKDIR /app
+
+EXPOSE 8080
+
+ADD . /app
+
+# AfPersistence/grails-app/conf/BuildConfig.groovy hard coded AfSecurity path. So we have to make a symbol link
+RUN ln -s plugins annotationframework \
+    && grails compile \
+    && sed -e 's/localhost:3306/db:3306/' -e 's/catch_test/catch/' Catch-config.properties > catch-config.properties
+
+VOLUME ['/app/web-app/uploads']
+
+CMD ["grails", "run-app"]

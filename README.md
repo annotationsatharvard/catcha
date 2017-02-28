@@ -107,7 +107,23 @@ $ grails run-app
 ```
 
 
-## Run with Docker
+## Develop with Docker
+
+When developing with Docker, all the dependencies are included in docker images. No need to install anything on the host other than (docker)[https://docs.docker.com/engine/installation/]
+
+NOTE: This repo has submodules. If `--recursive` is not specified when cloning the repo, you need to run `git submodule update --init` to pull down the submodules.
+
+### Update configruation
+
+Update the following line in `catch-config.properties`:
+
+```
+dataSource.url=jdbc:mysql://localhost:3306/catch_test?useUnicode=yes&characterEncoding=UTF-8&autoReconnect=true
+```
+To
+```
+dataSource.url=jdbc:mysql://db:3306/catch?useUnicode=yes&characterEncoding=UTF-8&autoReconnect=true
+```
 
 ### Start application
 
@@ -116,6 +132,14 @@ docker-compose up -d
 ```
 
 Docker will download official MySQL image and build catcha image. Docker-compose will create a docker network and run both images. Once they are started, the application can be accessed at http://localhost:8080.
+
+Once the docker containers are running, you can make changes to the files on the host and they will be auto-reloaded.
+
+### Check logs
+
+```
+docker logs -f catch_app_1
+```
 
 ### Stop application
 

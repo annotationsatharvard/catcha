@@ -17,7 +17,7 @@ class AuthTokenServiceTests {
     @Test
     void generateToken_shouldGenerateAndVerifyToken() {
         SystemApi.build(name: "openannotation", apikey: "0cbfa370-b73c-4e3a-ae46-582df284b7c3", secretKey: "{shared key}", enabled:true)
-        def actualToken = service.generateAuthToken("openannotation", "jmiranda", 86400, new Date(2013, 1, 1))
+        def actualToken = service.generateAuthToken("0cbfa370-b73c-4e3a-ae46-582df284b7c3", "jmiranda", new Date(), 86400)
         assertTrue service.validateAuthToken(actualToken)
     }
 

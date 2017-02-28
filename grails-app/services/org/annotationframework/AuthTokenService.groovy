@@ -56,6 +56,10 @@ class AuthTokenService {
         JWSObject jwsObject = new JWSObject(header, new Payload(jwtClaims.toJSONObject()));
 
         SystemApi systemApi = SystemApi.findByApikey(consumerKey)
+        if (!systemApi) {
+            throw new IllegalArgumentException("Unable to locate API consumer for ${consumerKey}. Please email your system admistrator to create a valid API consumer.");
+        }
+
         if (!systemApi?.secretKey) {
             throw new IllegalArgumentException("System API must have a valid secret key in order to sign token. Please email your system admistrator to retrieve your secret key.");
         }

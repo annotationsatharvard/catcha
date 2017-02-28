@@ -1,11 +1,25 @@
 language: groovy
-
 jdk:
-- openjdk7
-
+  - openjdk7
 before_install:
-- sudo add-apt-repository -y ppa:groovy-dev/grails
-- sudo apt-get update
-- sudo apt-get install grails-2.2.5
+  #
+  # The following block will resolve OpenJDK7 crash issue in Travis
+  # Refer to https://github.com/travis-ci/travis-ci/issues/5227#issuecomment-165131913
+  #
+  - cat /etc/hosts # optionally check the content *before*
+  - sudo hostname "$(hostname | cut -c1-63)"
+  - sed -e "s/^\\(127\\.0\\.0\\.1.*\\)/\\1 $(hostname | cut -c1-63)/" /etc/hosts | sudo tee /etc/hosts
+  - cat /etc/hosts # optionally check the content *after*
 
-script: "grails test-app unit: --non-interactive"
+  # Install inline plugin dependencies
+  - pwd
+  - cd ..
+  - mkdir annotationframework
+  - cd annotationframework
+  - git clone https://github.com/annotationframework/AfPersistence.git
+  - git clone https://github.com/annotationframework/AfSecurity.git
+  - git clone https://github.com/annotationframework/AfShared.git
+  - cd ../catcha
+script: ./grailsw refresh-dependencies
+  && ./grailsw "test-app unit:"
+  && ./grailsw "test-app integration:"

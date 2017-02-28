@@ -58,6 +58,8 @@ grails.project.dependency.resolution = {
             //excludes "sesame-runtime-osgi"
         }
 
+        compile ("com.nimbusds:nimbus-jose-jwt:2.20")
+
 		compile "org.apache.marmotta:sesame-tools-rio-jsonld:3.0.0-incubating"
 
 		compile ("org.apache.jena:jena-core:2.11.0") {

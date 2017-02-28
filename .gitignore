@@ -21,3 +21,7 @@ stacktrace.log
 /target-eclipse/
 /projectFilesBackup/
 .data
+.ideaDataSources/
+.slcache/
+dataSources/
+site/

@@ -16,7 +16,7 @@ class AuthTokenServiceTests {
 
     @Test
     void generateToken_shouldGenerateAndVerifyToken() {
-        SystemApi.build(name: "openannotation", apikey: "0cbfa370-b73c-4e3a-ae46-582df284b7c3", secretKey: "{shared key}", enabled:true)
+        SystemApi.build(name:"openannotation", apikey: "0cbfa370-b73c-4e3a-ae46-582df284b7c3", secretKey: "{shared key}", enabled:true)
         def actualToken = service.generateAuthToken("0cbfa370-b73c-4e3a-ae46-582df284b7c3", "jmiranda", new Date(), 86400)
         assertTrue service.validateAuthToken(actualToken)
     }
@@ -60,7 +60,7 @@ class AuthTokenServiceTests {
         }
     }
 
-    @Ignore // disabled feature
+    @Test
     void generateAuthToken_shouldFailWithExpiryError() {
         SystemApi.build(apikey: "consumer-key", secretKey: "super-secret-key-shh", enabled: true )
         String authToken = service.generateAuthToken("consumer-key", "user-id", new Date()-2, 86400)
@@ -72,16 +72,16 @@ class AuthTokenServiceTests {
         assert message.startsWith("Token expired on ")
     }
 
-    @Ignore // disabled feature
+    @Test
     void generateAuthToken_shouldFailWithIssuedAtError() {
         SystemApi.build(apikey: "consumer-key", secretKey: "super-secret-key-shh", enabled: true)
-        String authToken = service.generateAuthToken("consumer-key", "user-id", new Date()+1, 86400)
+        String authToken = service.generateAuthToken("consumer-key", "user-id", new Date()+1, 400)
         println "authToken: " + authToken
         def message = shouldFail(IllegalArgumentException) {
             service.validateAuthToken(authToken)
         }
         println message
-        assertEquals "Token is not valid yet", message
+        assert message.startsWith("Token is not valid yet")
     }
 
 }

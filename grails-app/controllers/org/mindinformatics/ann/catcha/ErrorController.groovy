@@ -29,11 +29,11 @@ class ErrorController {
     def serverError() {
         log.warn("Uncaught exception: " + request?.exception?.message, request?.exception);
         withFormat {
-            html {
-                render(view: "/error")
-            }
             json {
                 render([error: [code: 500, message: request?.exception?.message, exception: request?.exception?.cause?.class?.name]] as JSON)
+            }
+            html {
+                render(view: "/error")
             }
         }
     }

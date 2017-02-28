@@ -1,7 +1,7 @@
 version: '2'
 services:
   db:
-    image: mysql:5.7
+    image: mariadb:10.1
     volumes:
       - "./.data/db:/var/lib/mysql"
     restart: always
@@ -12,9 +12,13 @@ services:
       MYSQL_PASSWORD: catch
   app:
     build: .
+    image: compass/catcha:latest
     depends_on:
       - db
     volumes:
-      - "./.data/app:/usr/local/tomcat/webapps/ROOT/uploads"
+      - ".:/app"
+      - "./.data/app:/app/web-app/uploads"
+      - ".data/cache:/root/.grails/ivy-cache"
     ports:
       - "8080:8080"
+

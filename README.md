@@ -8,9 +8,10 @@ catcha
 
 Catching Annotation (Catch-A)
 
-This software was created for the Harvard Library Labs project CATCH (https://osc.hul.harvard.edu/liblab/proj/catch) awarded to Phil Desenne, Martin Schreiner and Paolo Ciccarese
+This software was created for the Harvard Library Labs project [CATCH](https://osc.hul.harvard.edu/liblab/proj/catch) awarded to Phil Desenne, Martin Schreiner and Paolo Ciccarese.
 
 The software was originally written by:
+
 * Dr. Paolo Ciccarese http://paolociccarese.info
 * Justin Miranda https://github.com/jmiranda
 
@@ -22,8 +23,8 @@ You can find the core plugin dependencies at [https://github.com/annotationframe
 Start a discussion on our [Slack](http://slack.annotationhub.org). Great place to ask questions, discuss feature requests, and report bugs.
 
 ## Implementer Installation 
-* Use the Run With Docker installation instructions below.
-* Follow installation instructions on [catcha.readthedocs.io] (http://catcha.readthedocs.io/en/latest/admin-guide/installation/)
+* Use the Run With Docker installation instructions below
+* Follow installation instructions on [catcha.readthedocs.io](http://catcha.readthedocs.io/en/latest/admin-guide/installation/)
 
 ## Developer Installation
 
@@ -51,7 +52,7 @@ $ gvm install grails 2.2.1
 ```
 
 #### MySQL 
-See http://dev.mysql.com/downloads/installer/. On Ubuntu 
+See http://dev.mysql.com/downloads/installer/. On Ubuntu:
 ```
 sudo apt-get install mysql-server
 ```
@@ -109,7 +110,7 @@ $ grails run-app
 
 ## Develop with Docker
 
-When developing with Docker, all the dependencies are included in docker images. No need to install anything on the host other than (docker)[https://docs.docker.com/engine/installation/]
+When developing with Docker, all the dependencies are included in docker images. No need to install anything on the host other than [docker](https://docs.docker.com/engine/installation/).
 
 NOTE: This repo has submodules. If `--recursive` is not specified when cloning the repo, you need to run `git submodule update --init` to pull down the submodules.
 
